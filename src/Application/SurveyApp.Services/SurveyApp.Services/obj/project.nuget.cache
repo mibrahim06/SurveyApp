@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "2zH8VdZWPPEQ0P5RpkGTbr3pPyhbBPKwbWkR7jR14J2AE85WJgWgxgY7ebFnwwYdE2jEzkA0GepFg4Xfaf9nBQ==",
+  "dgSpecHash": "/UboI6IBbGSn1WPQAj0LH4QsDS55Hkkkz9uYZuJZGlQkGjqSmrJGcXAeAeogSX1880SZZufnsJDStCL8dbpESQ==",
   "success": true,
   "projectFilePath": "/Users/musibra/Desktop/SurveyApp/src/Application/SurveyApp.Services/SurveyApp.Services/SurveyApp.Services.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/musibra/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
