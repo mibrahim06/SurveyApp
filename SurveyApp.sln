@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Entities", "src\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Infrastructure", "src\Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj", "{03249A72-2C41-471C-80C8-59FDEDE2D68E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Mvc", "src\Client\SurveyApp.Mvc\SurveyApp.Mvc\SurveyApp.Mvc.csproj", "{059EEDD3-3247-4F58-80EE-AF2B0D55D100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,7 @@ Global
 		{F83C730E-39B1-4649-91E0-6F265D137308} = {748BFF13-E334-4531-9F72-F65AEA2691E5}
 		{F477AD40-605B-4638-84CD-4C00C691A995} = {5C0A8AE6-74F9-4E5D-A1E7-381A196AD5EA}
 		{03249A72-2C41-471C-80C8-59FDEDE2D68E} = {6942B876-304A-4BC7-BDD5-8B8176F51407}
+		{059EEDD3-3247-4F58-80EE-AF2B0D55D100} = {A583A7B6-1CC9-496C-BFE5-D426BA1E72BC}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D8000988-4430-4135-9214-BD47A29D0AAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -65,5 +68,9 @@ Global
 		{03249A72-2C41-471C-80C8-59FDEDE2D68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03249A72-2C41-471C-80C8-59FDEDE2D68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03249A72-2C41-471C-80C8-59FDEDE2D68E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{059EEDD3-3247-4F58-80EE-AF2B0D55D100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{059EEDD3-3247-4F58-80EE-AF2B0D55D100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{059EEDD3-3247-4F58-80EE-AF2B0D55D100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{059EEDD3-3247-4F58-80EE-AF2B0D55D100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
