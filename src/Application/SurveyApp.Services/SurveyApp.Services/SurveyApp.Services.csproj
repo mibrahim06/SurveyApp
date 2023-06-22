@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Domain\SurveyApp.Entities\SurveyApp.Entities\SurveyApp.Entities.csproj" />
+      <ProjectReference Include="..\..\..\Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

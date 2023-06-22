@@ -1,7 +1,21 @@
+
+using SurveyApp.Infrastructure.Repositories;
+using SurveyApp.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, FakeUserRepository>();
+
+// get all users
+var users = builder.Services.BuildServiceProvider().GetRequiredService<IUserService>().GetAll();
+Console.WriteLine("All users:");
+foreach (var item in users)
+{
+    Console.WriteLine(item.Name);
+}
 
 var app = builder.Build();
 
