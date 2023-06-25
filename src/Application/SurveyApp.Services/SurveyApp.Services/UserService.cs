@@ -18,4 +18,9 @@ public class UserService : IUserService
         if (user == null) return null;
         return user;
     }
+
+    public IEnumerable<User> GetAll()
+    {
+        return _userRepository.GetAllAsync().Result;
+    }
 }

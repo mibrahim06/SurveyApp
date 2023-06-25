@@ -1,16 +1,22 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model UserLoginModel
 
 @{
-    ViewData["Title"] = "Login";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+    var error = TempData["error"] as string;
 }
-@Html.ValidationMessage("LoginError")
-<h1>Giriş Yap</h1> 
 
-<hr/>
+<h1>Giriş Yap</h1>
 
+@if (!string.IsNullOrEmpty(error))
+{
+    <div class="alert alert-danger" role="alert" style="padding: 20px;">
+        <h2>@error</h2>
+    </div>
+}
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Login" asp-route-rtnUrl="@ViewBag.ReturnUrl">
+        <form asp-action="Login" asp-route-returnUrl="@returnUrl" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Username" class="control-label">Kullanıcı adı</label>

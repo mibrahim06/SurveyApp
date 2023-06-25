@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SurveyApp.Mvc.Models;
 
@@ -23,7 +24,11 @@ public class HomeController : Controller
         return View();
     }
     
-    
+    [Authorize]
+    public IActionResult Secured()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
