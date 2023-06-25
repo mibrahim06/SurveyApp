@@ -9,14 +9,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, FakeUserRepository>();
 
-// get all users
-var users = builder.Services.BuildServiceProvider().GetRequiredService<IUserService>().GetAll();
-Console.WriteLine("All users:");
-foreach (var item in users)
-{
-    Console.WriteLine(item.Name);
-}
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

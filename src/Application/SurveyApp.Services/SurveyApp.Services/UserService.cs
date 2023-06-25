@@ -12,24 +12,10 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-
-    public User GetById(int id)
+    public User Authenticate(string username, string password)
     {
-        var user = _userRepository.GetByIdAsync(id).Result;
-        if (user == null)
-        {
-            return null;
-        }
+        var user = _userRepository.GetUserByUsernamePasswordAsync(username, password).Result;
+        if (user == null) return null;
         return user;
-    }
-
-    public IEnumerable<User> GetAll()
-    {
-        var users = _userRepository.GetAllAsync().Result;
-        if (users == null)
-        {
-            return null;
-        }
-        return users;
     }
 }
