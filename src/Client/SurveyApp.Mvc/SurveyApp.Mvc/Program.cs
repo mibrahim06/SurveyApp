@@ -1,4 +1,5 @@
 
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using SurveyApp.Infrastructure.Repositories;
 using SurveyApp.Services;
@@ -13,6 +14,33 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
         {
             options.LoginPath = "/login";
+            options.AccessDeniedPath = "/denied";
+            options.Events = new CookieAuthenticationEvents()
+            {
+                OnSignedIn = async context =>
+                {
+                 
+                    await Task.CompletedTask;
+                },
+                OnSigningOut = async context =>
+                {
+                    await Task.CompletedTask;
+                },
+                OnValidatePrincipal = async context =>
+                {
+                    var principal = context.Principal;
+                    if (principal.HasClaim(c => c.Type == ClaimTypes.NameIdentifier))
+                    {
+                        if (principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value ==
+                            "ckaya")
+                        {
+                            var claimsIdentity = principal.Identity as ClaimsIdentity;
+                            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
+                        }
+                    }
+                    await Task.CompletedTask;
+                }
+            };
         }
     );
 var app = builder.Build();

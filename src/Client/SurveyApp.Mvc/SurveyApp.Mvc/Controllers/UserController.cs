@@ -39,7 +39,7 @@ public class UserController : Controller
             var claims = new List<Claim>();
             claims.Add(new Claim("username", user.UserName));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserName));
-            claims.Add(new Claim("password", user.Password));
+            claims.Add(new Claim(ClaimTypes.Name, user.Name));
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             await HttpContext.SignInAsync(claimsPrincipal);
@@ -55,5 +55,10 @@ public class UserController : Controller
     {
         await HttpContext.SignOutAsync();
         return Redirect("/");
+    }
+    [HttpGet("denied")]
+    public IActionResult Denied()
+    {
+        return View();
     }
 }

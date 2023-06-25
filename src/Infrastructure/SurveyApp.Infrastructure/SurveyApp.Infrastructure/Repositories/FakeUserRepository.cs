@@ -16,7 +16,7 @@ public class FakeUserRepository : IUserRepository
             NameIdentifier = "Mustafa",
             UserName = "musibra",
             Password = "12345zxcv",
-            Role = "User",
+            Role = "Admin",
             Provider = "cookie",
             Email = "test@gmail.com",
             CreatedAt = DateTime.Now
