@@ -10,7 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
     options =>
     {
-        options.LoginPath = "/login";
+        options.LoginPath = "/User/login";
+        options.ReturnUrlParameter = "rtnUrl";
     });
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, FakeUserRepository>();

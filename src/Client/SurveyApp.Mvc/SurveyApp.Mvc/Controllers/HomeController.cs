@@ -30,21 +30,7 @@ public class HomeController : Controller
         return View();
     }
     
-    [HttpGet("login")]
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    [HttpPost("login")]
-    public IActionResult Validate(string username, string password)
-    {
-        //@warning: this is not secure, just for testing purposes
-        Console.WriteLine("username: " + username);
-        Console.WriteLine("password: " + password);
-        return Ok();
-    }
-
+   
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

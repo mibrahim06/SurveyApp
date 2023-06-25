@@ -32,4 +32,14 @@ public class UserService : IUserService
         }
         return users;
     }
+    
+    public User? Authenticate(string username, string password)
+    {
+        var user = _userRepository.GetUserByUsernamePasswordAsync(username, password).Result;
+        if (user == null)
+        {
+            return null;
+        }
+        return user;
+    }
 }

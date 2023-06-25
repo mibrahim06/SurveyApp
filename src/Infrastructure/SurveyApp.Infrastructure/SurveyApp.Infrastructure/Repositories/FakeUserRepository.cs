@@ -74,4 +74,10 @@ public class FakeUserRepository : IUserRepository
             _users.Remove(user);
         }
     }
+
+    public Task<User> GetUserByUsernamePasswordAsync(string username, string password)
+    {
+        var user = _users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+        return Task.FromResult(user);
+    }
 }
