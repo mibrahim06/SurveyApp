@@ -8,9 +8,7 @@ public class User : IEntity
     [Required]
     public string Name { get; set; }
     public string NameIdentifier { get; set; }
-    [Required]
     public string UserName { get; set; }
-    [Required]
     public string Password { get; set; }
     [Required]
     public string Role { get; set; }

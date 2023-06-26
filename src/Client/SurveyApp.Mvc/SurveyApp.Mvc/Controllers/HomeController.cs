@@ -24,7 +24,7 @@ public class HomeController : Controller
         return View();
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public IActionResult Secured()
     {
         return View();

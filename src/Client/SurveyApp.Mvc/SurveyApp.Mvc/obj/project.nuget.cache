@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LSWNCF9gbPMZ1PhITMqAVoxnsSTDvZiLMKY4+7fTVBXza7ffojLeaZbjn5z3zcbXDvF9HhezoZJIsyHFSEZvmQ==",
+  "dgSpecHash": "OzayUZlbmi7MkcJSDxRs1yWEEglCLzpNE/ZKRm47vIsvl39d5KFBr3A/1RyG4z4YbYPgvj0tiLSVlB5jU2J0/Q==",
   "success": true,
   "projectFilePath": "/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/SurveyApp.Mvc.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/musibra/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/musibra/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/musibra/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/microsoft.aspnetcore.authentication.google/7.0.7/microsoft.aspnetcore.authentication.google.7.0.7.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.data.sqlclient/5.0.2/microsoft.data.sqlclient.5.0.2.nupkg.sha512",

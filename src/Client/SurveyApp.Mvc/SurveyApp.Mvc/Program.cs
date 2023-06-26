@@ -1,46 +1,34 @@
 
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using SurveyApp.Infrastructure.Repositories;
 using SurveyApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var googleClientId = builder.Configuration["GoogleAuth:ClientId"];
+var googleClientSecret = builder.Configuration["GoogleAuth:ClientSecret"];
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, FakeUserRepository>();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme  = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    })
     .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.AccessDeniedPath = "/denied";
+    }).AddGoogle(options =>
         {
-            options.LoginPath = "/login";
-            options.AccessDeniedPath = "/denied";
-            options.Events = new CookieAuthenticationEvents()
-            {
-                OnSignedIn = async context =>
-                {
-                 
-                    await Task.CompletedTask;
-                },
-                OnSigningOut = async context =>
-                {
-                    await Task.CompletedTask;
-                },
-                OnValidatePrincipal = async context =>
-                {
-                    var principal = context.Principal;
-                    if (principal.HasClaim(c => c.Type == ClaimTypes.NameIdentifier))
-                    {
-                        if (principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value ==
-                            "ckaya")
-                        {
-                            var claimsIdentity = principal.Identity as ClaimsIdentity;
-                            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
-                        }
-                    }
-                    await Task.CompletedTask;
-                }
-            };
+            if (googleClientId != null) options.ClientId = googleClientId;
+            if (googleClientSecret != null) options.ClientSecret = googleClientSecret;
+            options.CallbackPath = "/auth";
+            options.AuthorizationEndpoint += "?prompt=consent";
         }
     );
 var app = builder.Build();
