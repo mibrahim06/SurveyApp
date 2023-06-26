@@ -13,6 +13,7 @@ public class RedirectMiddleware
     {
         if(context.Request.Path == "/login")
         {
+            // If user is authenticated, redirect to home
             if (context.User.Identity.IsAuthenticated)
             {
                 context.Response.Redirect("/Home/Index");

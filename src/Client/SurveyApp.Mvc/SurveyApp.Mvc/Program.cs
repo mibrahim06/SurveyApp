@@ -2,7 +2,9 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using SurveyApp.Infrastructure.Data;
 using SurveyApp.Infrastructure.Repositories;
 using SurveyApp.Mvc;
 using SurveyApp.Services;
@@ -16,7 +18,7 @@ var googleClientSecret = builder.Configuration["GoogleAuth:ClientSecret"];
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, FakeUserRepository>();
+builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -26,6 +28,16 @@ builder.Services.AddAuthentication(options =>
     {
         options.LoginPath = "/login";
         options.AccessDeniedPath = "/denied";
+        options.Events = new CookieAuthenticationEvents()
+        {
+            OnSigningIn = async context =>
+            {
+                var scheme = context.Properties.Items.Where(k=>k.Key == ".AuthScheme").FirstOrDefault();
+                var claims = new Claim(scheme.Key, scheme.Value);
+                var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
+                claimsIdentity.AddClaim(claims);
+            }
+        };
     }).AddOpenIdConnect("google", options =>
         {
             options.Authority = "https://accounts.google.com";
@@ -36,6 +48,11 @@ builder.Services.AddAuthentication(options =>
         }
     );
 
+
+var connectionString = builder.Configuration.GetConnectionString("database");
+builder.Services.AddDbContext<SurveyDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,6 +62,12 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var dbContext = services.GetRequiredService<SurveyDbContext>();
+dbContext.Database.EnsureCreated();
+DatabaseSeeding.Seed(dbContext);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

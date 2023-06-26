@@ -56,7 +56,10 @@ public class UserController : Controller
             claims.Add(new Claim(ClaimTypes.Name, user.Name));
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-            await HttpContext.SignInAsync(claimsPrincipal);
+            var items = new Dictionary<string, string>();
+            items.Add(".AuthScheme", CookieAuthenticationDefaults.AuthenticationScheme);
+            var properties = new AuthenticationProperties(items);
+            await HttpContext.SignInAsync(claimsPrincipal, properties);
             return Redirect(returnUrl ?? "/");
         }
         // If user is not authenticated, return to login page with error message
