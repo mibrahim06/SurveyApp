@@ -27,6 +27,20 @@ public class UserController : Controller
         ViewData["ReturnUrl"] = returnUrl;
         return View();
     }
+    
+    [HttpGet("login/{provider}")]
+    public  IActionResult LoginExternal([FromRoute] string provider,[FromQuery] string? returnUrl)
+    {
+        if (User != null && User.Identities.Any(identity => identity.IsAuthenticated))
+        {
+            RedirectToAction("Index", "Home");
+        }
+        returnUrl = string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl;
+        var authenticationProperties = new AuthenticationProperties { RedirectUri = returnUrl };
+        Console.WriteLine("LoginExternal");
+        Console.WriteLine("PROVIDER: " + provider);
+        return new ChallengeResult(provider, authenticationProperties);
+    }
 
     [HttpPost("login")]
     public async Task<IActionResult> Validate(UserLoginModel userInfo, string? returnUrl)

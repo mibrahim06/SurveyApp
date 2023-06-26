@@ -2,7 +2,9 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using SurveyApp.Infrastructure.Repositories;
+using SurveyApp.Mvc;
 using SurveyApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,27 +12,30 @@ var builder = WebApplication.CreateBuilder(args);
 var googleClientId = builder.Configuration["GoogleAuth:ClientId"];
 var googleClientSecret = builder.Configuration["GoogleAuth:ClientSecret"];
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, FakeUserRepository>();
 builder.Services.AddAuthentication(options =>
     {
-        options.DefaultScheme  = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     })
     .AddCookie(options =>
     {
         options.LoginPath = "/login";
         options.AccessDeniedPath = "/denied";
-    }).AddGoogle(options =>
+    }).AddOpenIdConnect("google", options =>
         {
+            options.Authority = "https://accounts.google.com";
             if (googleClientId != null) options.ClientId = googleClientId;
             if (googleClientSecret != null) options.ClientSecret = googleClientSecret;
             options.CallbackPath = "/auth";
-            options.AuthorizationEndpoint += "?prompt=consent";
+            options.SaveTokens = true;
         }
     );
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +52,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<RedirectMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
