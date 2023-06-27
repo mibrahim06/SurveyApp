@@ -44,6 +44,7 @@ public class UserService : IUserService
     {
         var user = new User
         {
+            // TODO : Email and password are incorrect here, this is just a demo
             NameIdentifier = claims.GetClaim(ClaimTypes.NameIdentifier),
             UserName = claims.GetClaim(ClaimTypes.GivenName),
             Name = claims.GetClaim(ClaimTypes.GivenName),
