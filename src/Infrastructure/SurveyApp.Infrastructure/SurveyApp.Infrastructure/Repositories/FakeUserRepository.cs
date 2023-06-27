@@ -17,7 +17,7 @@ public class FakeUserRepository : IUserRepository
             UserName = "musibra",
             Password = "12345zxcv",
             Role = "Admin",
-            Provider = "cookie",
+            Provider = "Cookies",
             Email = "test@gmail.com",
             CreatedAt = DateTime.Now
         };
@@ -30,7 +30,7 @@ public class FakeUserRepository : IUserRepository
             UserName = "ckaya",
             Password = "123",
             Role = "User",
-            Provider = "cookie",
+            Provider = "Cookies",
             Email = "test2@gmail.com"
         };
         

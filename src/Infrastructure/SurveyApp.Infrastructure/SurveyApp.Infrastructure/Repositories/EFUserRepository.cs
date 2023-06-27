@@ -25,8 +25,13 @@ public class EFUserRepository : IUserRepository
 
     public async Task AddAsync(User entity)
     {
-        var addingUser = await _dbContext.Users.AddAsync(entity); 
-        await _dbContext.SaveChangesAsync();
+        //check if user already exists
+        var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(x => x.UserName == entity.UserName);
+        if (user == null)
+        {
+            var addingUser = await _dbContext.Users.AddAsync(entity); 
+            await _dbContext.SaveChangesAsync();
+        }
     }
 
     public async Task UpdateAsync(User entity)

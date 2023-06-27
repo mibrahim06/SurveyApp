@@ -20,7 +20,7 @@ public static class DatabaseSeeding
                 UserName = "musibra",
                 Password = "12345zxcv",
                 Role = "Admin",
-                Provider = "cookie",
+                Provider = "Cookies",
                 Email = "test@gmail.com",
                 CreatedAt = DateTime.Now
             };
@@ -32,8 +32,9 @@ public static class DatabaseSeeding
                 UserName = "ckaya",
                 Password = "123",
                 Role = "User",
-                Provider = "cookie",
-                Email = "test2@gmail.com"
+                Provider = "Cookies",
+                Email = "test2@gmail.com",
+                CreatedAt = DateTime.Now
             };
         
             var _users = new List<User> {user1, user2};

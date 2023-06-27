@@ -46,14 +46,10 @@ public class UserController : Controller
     public async Task<IActionResult> Validate(UserLoginModel userInfo, string? returnUrl)
     {
         
-        var user = _userService.Authenticate(userInfo.Username, userInfo.Password);
+        var isUserValid = _userService.Authenticate(userInfo.Username, userInfo.Password, out var claims);
         // If user is authenticated, redirect to returnUrl
-        if (user != null)
+        if (isUserValid)
         {
-            var claims = new List<Claim>();
-            claims.Add(new Claim("username", user.UserName));
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserName));
-            claims.Add(new Claim(ClaimTypes.Name, user.Name));
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             var items = new Dictionary<string, string>();

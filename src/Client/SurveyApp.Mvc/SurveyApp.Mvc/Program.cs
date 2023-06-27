@@ -33,9 +33,18 @@ builder.Services.AddAuthentication(options =>
             OnSigningIn = async context =>
             {
                 var scheme = context.Properties.Items.Where(k=>k.Key == ".AuthScheme").FirstOrDefault();
-                var claims = new Claim(scheme.Key, scheme.Value);
+                var claim = new Claim(scheme.Key, scheme.Value);
                 var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
-                claimsIdentity.AddClaim(claims);
+                var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                var nameIdentifier = claimsIdentity.Claims.FirstOrDefault(m => m.Type == ClaimTypes.NameIdentifier)?.Value;
+                if (userService != null && nameIdentifier != null)
+                {
+                    var appUser = userService.GetUserByExternalProvider(scheme.Value, nameIdentifier);
+                    if (appUser == null && scheme.Value != "Cookies")
+                    {
+                        userService.AddNewUser(scheme.Value, claimsIdentity.Claims.ToList());
+                    }
+                }
             }
         };
     }).AddOpenIdConnect("google", options =>
