@@ -11,7 +11,7 @@ public class EFUserRepository : IUserRepository
     {
         _dbContext = dbContext;
     }
-    public async Task<User> GetByIdAsync(int id)
+    public async Task<User?> GetByIdAsync(int id)
     {
         var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         return user;
@@ -41,9 +41,17 @@ public class EFUserRepository : IUserRepository
         return _dbContext.SaveChangesAsync();
     }
 
-    public async Task<User> GetUserByUsernamePasswordAsync(string username, string password)
+    public async Task<User?> GetUserByUsernamePasswordAsync(string username, string password)
     {
         var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(x => x.UserName == username && x.Password == password);
+        return user;
+    }
+
+    public async Task<User?> GetUserByExternalProviderAsync(string provider, string nameIdentifier)
+    {
+        var user = await _dbContext.Users
+            .Where(a => a.Provider == provider)
+            .Where(a => a.NameIdentifier == nameIdentifier).FirstOrDefaultAsync();
         return user;
     }
 }

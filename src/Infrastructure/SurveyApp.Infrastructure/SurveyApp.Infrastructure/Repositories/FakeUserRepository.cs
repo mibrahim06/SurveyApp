@@ -37,7 +37,7 @@ public class FakeUserRepository : IUserRepository
         _users = new List<User> {user1, user2};
     }
 
-    public async Task<User> GetByIdAsync(int id)
+    public async Task<User?> GetByIdAsync(int id)
     {
         var user = _users.FirstOrDefault(u => u.Id == id);
         return await Task.FromResult(user);
@@ -48,36 +48,47 @@ public class FakeUserRepository : IUserRepository
         return await Task.FromResult(_users);
     }
 
-    public async Task AddAsync(User entity)
+    public Task AddAsync(User entity)
     {
         var user = _users.FirstOrDefault(u => u.Id == entity.Id);
         if (user == null)
         {
             _users.Add(entity);
         }
+
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateAsync(User entity)
+    public Task UpdateAsync(User entity)
     {
         var user = _users.FirstOrDefault(u => u.Id == entity.Id);
         if (user != null)
         {
             user = entity;
         }
+
+        return Task.CompletedTask;
     }
 
-    public async Task DeleteAsync(User entity)
+    public Task DeleteAsync(User? entity)
     {
-        var user = _users.FirstOrDefault(u => u.Id == entity.Id);
+        var user = _users.FirstOrDefault(u => entity != null && u.Id == entity.Id);
         if (user != null)
         {
             _users.Remove(user);
         }
+
+        return Task.CompletedTask;
     }
 
-    public async Task<User> GetUserByUsernamePasswordAsync(string username, string password)
+    public async Task<User?> GetUserByUsernamePasswordAsync(string username, string password)
     {
         var user = _users.FirstOrDefault(u => u.UserName == username && u.Password == password);
         return await Task.FromResult(user);
+    }
+
+    public Task<User?> GetUserByExternalProviderAsync(string provider, string nameIdentifier)
+    {
+        throw new NotImplementedException();
     }
 }
