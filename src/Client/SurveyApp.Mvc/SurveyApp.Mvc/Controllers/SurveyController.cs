@@ -6,7 +6,6 @@ namespace SurveyApp.Mvc.Controllers;
 
 public class SurveyController : Controller
 {
-
     [Authorize]
     public IActionResult MySurveys()
     {
