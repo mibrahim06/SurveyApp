@@ -2,7 +2,7 @@ using SurveyApp.Entities;
 
 namespace SurveyApp.Infrastructure.Repositories;
 
-public class FakeAnswersRepository : IRepository<Answer>
+public class FakeAnswersRepository : IAnswersRepository
 {
     private readonly List<Answer> _answers;
 

@@ -8,6 +8,7 @@ using SurveyApp.Infrastructure.Data;
 using SurveyApp.Infrastructure.Repositories;
 using SurveyApp.Mvc;
 using SurveyApp.Services;
+using SurveyApp.Services.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,12 @@ var googleClientSecret = builder.Configuration["GoogleAuth:ClientSecret"];
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, EFUserRepository>();
+builder.Services.AddScoped<ISurveyService, SurveyService>();
+builder.Services.AddScoped<ISurveyRepository, FakeSurveyRepository>();
+builder.Services.AddAutoMapper(typeof(MapProfile));
+
+
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;

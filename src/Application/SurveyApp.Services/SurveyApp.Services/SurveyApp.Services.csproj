@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Domain\SurveyApp.Entities\SurveyApp.Entities\SurveyApp.Entities.csproj" />
       <ProjectReference Include="..\..\..\Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj" />
+      <ProjectReference Include="..\..\SurveyApp.DataTransferObjects\SurveyApp.DataTransferObjects\SurveyApp.DataTransferObjects.csproj" />
     </ItemGroup>
 
     <ItemGroup>

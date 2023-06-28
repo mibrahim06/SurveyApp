@@ -2,7 +2,7 @@ using SurveyApp.Entities;
 
 namespace SurveyApp.Infrastructure.Repositories;
 
-public class FakeSurveyRepository : IRepository<Survey>
+public class FakeSurveyRepository : ISurveyRepository
 {
     private readonly List<Survey> _surveys;
 
@@ -28,26 +28,21 @@ public class FakeSurveyRepository : IRepository<Survey>
         };
     }
     
-    public Task<Survey?> GetByIdAsync(int id)
+    public async Task<Survey?> GetByIdAsync(int id)
     {
-        var survey = _surveys.FirstOrDefault(x => x.Id == id);
-        return Task.FromResult(survey);
+        var survey =   _surveys.FirstOrDefault(x => x.Id == id)!;
+        return  survey;
     }
 
-    public Task<IEnumerable<Survey>> GetAllAsync()
+    public async Task<IEnumerable<Survey>> GetAllAsync()
     {
-        var surveys = _surveys.AsEnumerable();
-        return Task.FromResult(surveys);
+        var surveys =  _surveys.AsEnumerable();
+        return surveys;
     }
 
     public Task AddAsync(Survey entity)
     {
-       var survey = _surveys.FirstOrDefault(x => x.Id == entity.Id);
-         if (survey == null)
-         {
-              _surveys.Add(entity);
-         }
-         return Task.FromResult(entity);
+        throw new NotImplementedException();
     }
 
     public Task UpdateAsync(Survey entity)

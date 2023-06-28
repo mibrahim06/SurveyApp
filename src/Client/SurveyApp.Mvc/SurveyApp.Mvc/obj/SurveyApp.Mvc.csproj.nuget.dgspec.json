@@ -81,6 +81,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/Users/musibra/Desktop/SurveyApp/src/Application/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj": {
+                "projectPath": "/Users/musibra/Desktop/SurveyApp/src/Application/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj"
+              },
               "/Users/musibra/Desktop/SurveyApp/src/Domain/SurveyApp.Entities/SurveyApp.Entities/SurveyApp.Entities.csproj": {
                 "projectPath": "/Users/musibra/Desktop/SurveyApp/src/Domain/SurveyApp.Entities/SurveyApp.Entities/SurveyApp.Entities.csproj"
               },

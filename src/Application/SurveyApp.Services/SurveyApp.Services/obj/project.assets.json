@@ -1057,6 +1057,16 @@
           }
         }
       },
+      "SurveyApp.DataTransferObjects/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/SurveyApp.DataTransferObjects.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SurveyApp.DataTransferObjects.dll": {}
+        }
+      },
       "SurveyApp.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3256,6 +3266,11 @@
         "version.txt"
       ]
     },
+    "SurveyApp.DataTransferObjects/1.0.0": {
+      "type": "project",
+      "path": "../../SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj",
+      "msbuildProject": "../../SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj"
+    },
     "SurveyApp.Entities/1.0.0": {
       "type": "project",
       "path": "../../../Domain/SurveyApp.Entities/SurveyApp.Entities/SurveyApp.Entities.csproj",
@@ -3271,6 +3286,7 @@
     "net7.0": [
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
+      "SurveyApp.DataTransferObjects >= 1.0.0",
       "SurveyApp.Entities >= 1.0.0",
       "SurveyApp.Infrastructure >= 1.0.0"
     ]
@@ -3301,6 +3317,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "/Users/musibra/Desktop/SurveyApp/src/Application/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj": {
+              "projectPath": "/Users/musibra/Desktop/SurveyApp/src/Application/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects/SurveyApp.DataTransferObjects.csproj"
+            },
             "/Users/musibra/Desktop/SurveyApp/src/Domain/SurveyApp.Entities/SurveyApp.Entities/SurveyApp.Entities.csproj": {
               "projectPath": "/Users/musibra/Desktop/SurveyApp/src/Domain/SurveyApp.Entities/SurveyApp.Entities/SurveyApp.Entities.csproj"
             },
