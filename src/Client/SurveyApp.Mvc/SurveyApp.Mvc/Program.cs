@@ -21,10 +21,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddScoped<ISurveyService, SurveyService>();
-builder.Services.AddScoped<ISurveyRepository, FakeSurveyRepository>();
+builder.Services.AddScoped<ISurveyRepository, EFSurveyRepository>();
+builder.Services.AddScoped<IQuestionRepository, EFQuestionRepository>();
+
 builder.Services.AddAutoMapper(typeof(MapProfile));
-
-
 
 builder.Services.AddAuthentication(options =>
     {
