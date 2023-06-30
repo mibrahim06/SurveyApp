@@ -21,4 +21,19 @@ public class SurveyService : ISurveyService
         var surveyDisplayResponses = _mapper.Map<IEnumerable<SurveyDisplayResponse>>(surveys);
         return surveyDisplayResponses;
     }
+    
+    public IEnumerable<SurveyDisplayResponse> GetSurveyDisplayResponsebByUserId(int userId)
+    {
+        var surveys = _surveyRepository.GetSurveysByUserId(userId).Result;
+        var surveyDisplayResponses = _mapper.Map<IEnumerable<SurveyDisplayResponse>>(surveys);
+        return surveyDisplayResponses;
+    }
+
+    public IList<Survey> GetSurveysByUsername(string username)
+    {
+        var surveys = _surveyRepository.GetAllAsync().Result;
+        var surveysByUsername = surveys.Where(x => x.User.UserName == username).ToList();
+        return surveysByUsername;
+    }
+   
 }

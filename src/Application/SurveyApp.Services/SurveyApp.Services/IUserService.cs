@@ -10,4 +10,6 @@ public interface IUserService
 
     bool AddNewUser(string provider, List<Claim> claims);
     IEnumerable<User> GetAll();
+    int GetUserId(string nameIdentifier);
+    User GetUser(string nameIdentifier);
 }

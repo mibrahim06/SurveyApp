@@ -1,28 +1,38 @@
+@using Microsoft.IdentityModel.Tokens
 @model IEnumerable<SurveyApp.DataTransferObjects.Outgoing.SurveyDisplayResponse>
 
 <h1>Anketlerim</h1>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach(var item in Model)
-    {
+@if (Model.IsNullOrEmpty())
+{
+    <div class="alert alert-info">
+        <p>Anketiniz bulunmamaktadır.</p>
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
         </tr>
-    }
-</table>
+        </thead>
+        <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+}

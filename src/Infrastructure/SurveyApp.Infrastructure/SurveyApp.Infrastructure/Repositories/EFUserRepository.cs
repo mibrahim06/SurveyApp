@@ -59,4 +59,21 @@ public class EFUserRepository : IUserRepository
             .Where(a => a.NameIdentifier == nameIdentifier).FirstOrDefaultAsync();
         return user;
     }
+
+    public int GetUserId(string nameIdentifier)
+    {
+        var user = _dbContext.Users.FirstOrDefault(x => x.NameIdentifier == nameIdentifier);
+        return user.Id;
+    }
+
+    public User GetUser(string nameIdentifier)
+    {
+        var user = _dbContext.Users.FirstOrDefault(x => x.NameIdentifier == nameIdentifier);
+        if (user == null)
+        {
+            // try to find by username 
+            user = _dbContext.Users.FirstOrDefault(x => x.UserName == nameIdentifier);
+        }
+        return user;
+    }
 }

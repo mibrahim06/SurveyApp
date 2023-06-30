@@ -38,4 +38,10 @@ public class EFSurveyRepository : ISurveyRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<IEnumerable<Survey>> GetSurveysByUserId(int userId)
+    {
+        var surveys = await _dbContext.Surveys.AsNoTracking().Where(x => x.UserId == userId).ToListAsync();
+        return surveys;
+    }
 }

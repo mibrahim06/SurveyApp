@@ -54,4 +54,9 @@ public class FakeSurveyRepository : ISurveyRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<IEnumerable<Survey>> GetSurveysByUserId(int userId)
+    {
+        throw new NotImplementedException();
+    }
 }

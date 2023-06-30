@@ -62,4 +62,14 @@ public class UserService : IUserService
     {
         return _userRepository.GetAllAsync().Result;
     }
+    
+    public int GetUserId(string nameIdentifier)
+    {
+        return _userRepository.GetUserId(nameIdentifier);
+    }
+    
+    public User GetUser(string nameIdentifier)
+    {
+        return _userRepository.GetUser(nameIdentifier);
+    }
 }
