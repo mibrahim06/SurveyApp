@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SurveyApp.DataTransferObjects.Incoming;
 using SurveyApp.DataTransferObjects.Outgoing;
 using SurveyApp.Entities;
 using SurveyApp.Mvc.Models;
@@ -49,4 +50,16 @@ public class SurveyController : Controller
     {
         return View();
     }
+    
+    [HttpPost]
+    public IActionResult CreateSurvey(CreateNewSurveyRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(request);
+        }
+        return RedirectToAction("MySurveys");
+    }
+    
+       
 }

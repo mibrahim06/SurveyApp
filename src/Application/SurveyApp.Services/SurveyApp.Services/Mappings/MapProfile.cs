@@ -10,6 +10,7 @@ public class MapProfile : Profile
     public MapProfile()
     {
         CreateMap<Survey, SurveyDisplayResponse>();
-        CreateMap<Survey, UpdateSurveyRequest>();
+        CreateMap<Survey, UpdateSurveyRequest>().ReverseMap();
+        CreateMap<Survey, CreateNewSurveyRequest>().ReverseMap();
     }
 }
