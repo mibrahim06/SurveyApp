@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VydmV5L0NyZWF0ZVN1cnZleS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Survey/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VydmV5L0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Survey/MySurveys.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VydmV5L015U3VydmV5cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

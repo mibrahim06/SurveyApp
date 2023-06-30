@@ -30,6 +30,20 @@ public class SurveyController : Controller
         var surveyDisplayResponses = _surveyService.GetSurveyDisplayResponsebByUserId(user.Id);
         return View(surveyDisplayResponses);
     }
+
+    public IActionResult SurveyResults()
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        ViewData["SurveyId"] = id;
+        var survey = _surveyService.GetUpdateSurveyRequestById(id);
+        return View(survey);
+    }
+    
     [Authorize]
     public IActionResult CreateSurvey()
     {

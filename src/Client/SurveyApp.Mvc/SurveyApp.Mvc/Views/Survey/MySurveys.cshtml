@@ -15,10 +15,13 @@ else
         <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Anket Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Anket Adı
+            </th>
+            <th>
+                İşlemler
             </th>
         </tr>
         </thead>
@@ -31,6 +34,10 @@ else
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="SurveyResults" asp-route-id="@item.Id">Sonuçları Gör</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
                 </td>
             </tr>
         }
