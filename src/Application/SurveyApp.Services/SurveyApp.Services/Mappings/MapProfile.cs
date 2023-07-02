@@ -12,5 +12,6 @@ public class MapProfile : Profile
         CreateMap<Survey, SurveyDisplayResponse>();
         CreateMap<Survey, UpdateSurveyRequest>().ReverseMap();
         CreateMap<Survey, CreateNewSurveyRequest>().ReverseMap();
+        CreateMap<Question, QuestionDisplayResponse>();
     }
 }

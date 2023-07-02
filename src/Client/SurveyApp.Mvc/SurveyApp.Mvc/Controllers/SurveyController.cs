@@ -52,7 +52,7 @@ public class SurveyController : Controller
     }
     
     [HttpPost]
-    public IActionResult CreateSurvey(CreateNewSurveyRequest request)
+    public IActionResult CreateSurvey(CreateSurveyModel request)
     {
         if (!ModelState.IsValid)
         {

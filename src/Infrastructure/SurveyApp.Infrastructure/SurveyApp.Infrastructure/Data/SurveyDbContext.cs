@@ -19,5 +19,6 @@ public class SurveyDbContext : DbContext
     {
         modelBuilder.Entity<User>().HasMany(u => u.Surveys).WithOne(s => s.User);
         modelBuilder.Entity<Survey>().HasMany(s => s.Questions).WithOne(q => q.Survey);
+      
     }
 }
