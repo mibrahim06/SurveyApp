@@ -14,11 +14,4 @@ public class SurveyDbContext : DbContext
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {
     }
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<User>().HasMany(u => u.Surveys).WithOne(s => s.User);
-        modelBuilder.Entity<Survey>().HasMany(s => s.Questions).WithOne(q => q.Survey);
-      
-    }
 }

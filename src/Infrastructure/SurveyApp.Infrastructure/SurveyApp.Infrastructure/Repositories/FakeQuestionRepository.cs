@@ -11,23 +11,20 @@ public class FakeQuestionRepository : IQuestionRepository
         var question1 = new Question()
         {
             Id = 1,
-            Text = "Question 1",
-            SurveyId = 1,
-            Type = QuestionType.Rating
+            Title = "Question 1",
+            SurveyId = 1
         };
         var question2 = new Question()
         {
             Id = 2,
-            Text = "Question 2",
-            SurveyId = 1,
-            Type = QuestionType.MultipleChoice,
+            Title = "Question 2",
+            SurveyId = 1
         };
         var question3 = new Question()
         {
             Id = 3,
-            Text = "Question 3",
-            SurveyId = 1,
-            Type = QuestionType.Text
+            Title = "Question 3",
+            SurveyId = 1
         };
         _questions = new()
         {

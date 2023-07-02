@@ -11,5 +11,4 @@ public interface  ISurveyService
     public IEnumerable<SurveyDisplayResponse> GetSurveyDisplayResponsebByUserId(int userId);
     public UpdateSurveyRequest GetUpdateSurveyRequestById(int id);
     public IList<Survey> GetSurveysByUsername(string username);
-    
 }

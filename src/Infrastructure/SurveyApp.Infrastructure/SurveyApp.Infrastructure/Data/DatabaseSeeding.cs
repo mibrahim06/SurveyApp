@@ -9,6 +9,7 @@ public static class DatabaseSeeding
         SeedUsers(dbContext);
         SeedSurveys(dbContext);
         SeedQuestions(dbContext);
+        SeedAnswers(dbContext);
     }
 
     private static void SeedUsers(SurveyDbContext dbContext)
@@ -79,24 +80,56 @@ public static class DatabaseSeeding
         {
             var questions1 = new Question()
             {
-                Text = "Question 1?",
+                Title = "Question 1?",
+                AnswerType = AnswerType.Text,
                 SurveyId = 1,
-                Type = QuestionType.SingleChoice
             };
             var questions2 = new Question()
             {
-                Text = "Question 2?",
+                Title = "Question 2?",
+                AnswerType = AnswerType.Text,
                 SurveyId = 1,
-                Type = QuestionType.SingleChoice
             };
             var questions3 = new Question()
             {
-                Text = "Question 3?",
+                Title = "Question 3?",
+                AnswerType = AnswerType.Text,
                 SurveyId = 2,
-                Type = QuestionType.SingleChoice
             };
             var questions = new List<Question> {questions1, questions2, questions3};
             dbContext.Questions.AddRange(questions);
+            dbContext.SaveChanges();
+        }
+    }
+    
+    private static void SeedAnswers(SurveyDbContext dbContext)
+    {
+        if (!dbContext.Questions.Any())
+        {
+            var answers1 = new Answer()
+            {
+                QuestionId = 1,
+                AnswerType = AnswerType.Text,
+                AnswerText = "Answer 1"
+            };
+            
+            var answers2 = new Answer()
+            {
+                QuestionId = 1,
+                AnswerType = AnswerType.Text,
+                AnswerText = "Answer 2"
+            };
+            
+            var answers3 = new Answer()
+            {
+                QuestionId = 2,
+                AnswerType = AnswerType.Text,
+                AnswerText = "Answer 3"
+            };
+            
+            var answers = new List<Answer> {answers1, answers2, answers3};
+            
+            dbContext.Answers.AddRange(answers);
             dbContext.SaveChanges();
         }
     }

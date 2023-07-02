@@ -45,6 +45,12 @@ public class SurveyController : Controller
         return View(survey);
     }
     
+    public IActionResult AddQuestion(int id)
+    {
+        ViewBag.SurveyId = id;
+        return View();
+    }
+    
     [Authorize]
     public IActionResult CreateSurvey()
     {
@@ -58,6 +64,7 @@ public class SurveyController : Controller
         {
             return View(request);
         }
+        
         return RedirectToAction("MySurveys");
     }
     
