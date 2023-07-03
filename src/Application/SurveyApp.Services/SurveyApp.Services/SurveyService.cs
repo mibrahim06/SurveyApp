@@ -37,22 +37,22 @@ public class SurveyService : ISurveyService
         return updateSurveyRequest;
     }
 
-    public IList<Survey> GetSurveysByUsername(string username)
+    public async Task<IList<Survey>> GetSurveysByUsername(string username)
     {
-        var surveys = _surveyRepository.GetAllAsync().Result;
-        var surveysByUsername = surveys.Where(x => x.User.UserName == username).ToList();
+        var surveys = await _surveyRepository.GetAllAsync();
+        var surveysByUsername =  surveys.Where(x => x.User.UserName == username).ToList();
         return surveysByUsername;
     }
 
-    public List<Question> GetQuestionsBySurveyId(int surveyId)
+    public async Task<List<Question>> GetQuestionsBySurveyId(int surveyId)
     {
-        var questions = _surveyRepository.GetQuestionsBySurveyId(surveyId).Result;
+        var questions = await _surveyRepository.GetQuestionsBySurveyId(surveyId);
         return questions;
     }
 
-    public Survey GetSurveyById(int id)
+    public async Task<Survey> GetSurveyById(int id)
     {
-        var survey = _surveyRepository.GetByIdAsync(id).Result;
+        var survey = await _surveyRepository.GetByIdAsync(id);
         return survey;
     }
 }

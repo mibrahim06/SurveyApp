@@ -14,10 +14,13 @@ public class SurveyController : Controller
 {
     private readonly ISurveyService _surveyService;
     private readonly IUserService _userService;
-    public SurveyController(ISurveyService surveyService, IUserService userService)
+    private readonly IQuestionService _questionService;
+  
+    public SurveyController(ISurveyService surveyService, IUserService userService, IQuestionService questionService)
     {
         _surveyService = surveyService;
         _userService = userService;
+        _questionService = questionService;
     }
     
     [Authorize]
@@ -51,10 +54,11 @@ public class SurveyController : Controller
         return View();
     }
     
-    public IActionResult ShowSurvey(int id)
+    public async Task<IActionResult> ShowSurvey(int id)
     {
-        var survey = _surveyService.GetSurveyById(id);
-        var questons = _surveyService.GetQuestionsBySurveyId(id);
+        var survey = await _surveyService.GetSurveyById(id);
+        var questions = await _surveyService.GetQuestionsBySurveyId(id);
+        
         if (survey == null)
         {
             return Redirect("/Survey/NotFoundSurvey");
@@ -62,7 +66,7 @@ public class SurveyController : Controller
         var model = new ShowSurveyModel
         {
             Survey = survey,
-            Questions = questons
+            Questions = questions
         };
         return View(model);
     }

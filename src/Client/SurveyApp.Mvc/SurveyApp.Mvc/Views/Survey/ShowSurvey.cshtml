@@ -3,7 +3,15 @@
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
+    var questionNumber = 1;
 }
 
 <h2>Anket adı: @Model.Survey.Name</h2>
+
+<div class="row">
+    @foreach (var question in Model.Questions)
+    {
+        <p>@questionNumber) @question.Title</p> questionNumber++;
+    }
+</div>
 

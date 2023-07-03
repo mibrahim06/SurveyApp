@@ -23,6 +23,7 @@ builder.Services.AddScoped<IUserRepository, EFUserRepository>();
 builder.Services.AddScoped<ISurveyService, SurveyService>();
 builder.Services.AddScoped<ISurveyRepository, EFSurveyRepository>();
 builder.Services.AddScoped<IQuestionRepository, EFQuestionRepository>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
 
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
