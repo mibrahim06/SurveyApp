@@ -11,11 +11,11 @@
 <div class="row">
     @foreach (var question in Model.Questions)
     {
-        <p>@questionNumber) @question.Title</p> questionNumber++;
+        <p>@questionNumber) @question.Title Type: @question.OptionType</p> questionNumber++;
         <br/>
         @foreach(var option in question.Options)
         {
-            <p>Option type: @option.OptionType</p>
+            <p>Option: @option.Text</p>
         }
     }
 </div>

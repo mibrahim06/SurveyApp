@@ -78,20 +78,24 @@ public static class DatabaseSeeding
     {
         if (!dbContext.Questions.Any())
         {
+            
             var questions1 = new Question()
             {
                 Title = "Question 1?",
                 SurveyId = 1,
+                OptionType = OptionType.Rating
             };
             var questions2 = new Question()
             {
                 Title = "Question 2?",
                 SurveyId = 1,
+                OptionType = OptionType.SingleChoice
             };
             var questions3 = new Question()
             {
                 Title = "Question 3?",
                 SurveyId = 2,
+                OptionType = OptionType.MultipleChoice
             };
             var questions = new List<Question> {questions1, questions2, questions3};
             dbContext.Questions.AddRange(questions);
@@ -103,25 +107,24 @@ public static class DatabaseSeeding
     {
         if (!dbContext.Options.Any())
         {
-            var answers1 = new Option()
+            var option1 = new Option()
             {
                 QuestionId = 1,
-                OptionType = OptionType.MultipleChoice
+                Text = "option1"
             };
-            
-            var answers2 = new Option()
+            var option2 = new Option()
             {
                 QuestionId = 1,
-                OptionType = OptionType.Text
+                Text = "option2"
             };
             
-            var answers3 = new Option()
+            var option3 = new Option()
             {
                 QuestionId = 2,
-                OptionType = OptionType.Rating
+                Text = "option3"
             };
             
-            var answers = new List<Option> {answers1, answers2, answers3};
+            var answers = new List<Option> {option1, option2, option3};
             
             dbContext.Options.AddRange(answers);
             dbContext.SaveChanges();
