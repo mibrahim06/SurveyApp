@@ -55,6 +55,10 @@ public class SurveyController : Controller
     {
         var survey = _surveyService.GetSurveyById(id);
         var questons = _surveyService.GetQuestionsBySurveyId(id);
+        if (survey == null)
+        {
+            return Redirect("/Survey/NotFoundSurvey");
+        }
         var model = new ShowSurveyModel
         {
             Survey = survey,
@@ -80,5 +84,11 @@ public class SurveyController : Controller
         return RedirectToAction("MySurveys");
     }
     
+    
+    [HttpGet]
+    public IActionResult NotFoundSurvey()
+    {
+        return View();
+    }
        
 }
