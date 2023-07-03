@@ -7,5 +7,5 @@ public class Question : IEntity
     public int SurveyId { get; set; }
     public Survey Survey { get; set; }
     public AnswerType AnswerType { get; set; }
-    public ICollection<Answer> Answers { get; set; }
+    public ICollection<Option> Options { get; set; }
 }

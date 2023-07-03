@@ -12,6 +12,11 @@
     @foreach (var question in Model.Questions)
     {
         <p>@questionNumber) @question.Title</p> questionNumber++;
+        <br/>
+        @foreach(var option in question.Options)
+        {
+            <p>Option type: @option.AnswerType</p>
+        }
     }
 </div>
 

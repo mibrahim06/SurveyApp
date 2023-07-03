@@ -41,8 +41,8 @@ public class SurveyController : Controller
     public IActionResult Edit(int id)
     {
         ViewData["SurveyId"] = id;
-        var survey = _surveyService.GetUpdateSurveyRequestById(id);
-        return View(survey);
+        var updateSurveyRequest = _surveyService.GetUpdateSurveyRequestById(id);
+        return View(updateSurveyRequest);
     }
     
     public IActionResult AddQuestion(int id)
@@ -55,11 +55,21 @@ public class SurveyController : Controller
     {
         var survey = await _surveyService.GetSurveyById(id);
         var questions = await _surveyService.GetQuestionsBySurveyId(id);
-        
+        var questionIds = questions.Select(x => x.Id).ToList();
+        foreach (var questionId in questionIds)
+        {
+            var answers = await _questionService.GetAnswersAsync(questionId);
+            foreach (var answer in answers)
+            {
+                Console.WriteLine(answer.Id);
+            }
+            questions.First(x => x.Id == questionId).Options = answers;
+        }
         if (survey == null)
         {
             return Redirect("/Survey/NotFoundSurvey");
         }
+        
         var model = new ShowSurveyModel
         {
             Survey = survey,
@@ -81,10 +91,8 @@ public class SurveyController : Controller
         {
             return View(request);
         }
-        
         return RedirectToAction("MySurveys");
     }
-    
     
     [HttpGet]
     public IActionResult NotFoundSurvey()
@@ -92,5 +100,4 @@ public class SurveyController : Controller
         // TODO: Make this view look better
         return View();
     }
-       
 }

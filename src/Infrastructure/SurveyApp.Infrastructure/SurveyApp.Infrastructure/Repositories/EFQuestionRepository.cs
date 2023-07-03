@@ -38,9 +38,9 @@ public class EFQuestionRepository : IQuestionRepository
         throw new NotImplementedException();
     }
 
-    public async Task<ICollection<Answer>> GetAnswersAsync(int questionId)
+    public async Task<ICollection<Option>> GetOptionsAsync(int questionId)
     {
-        var answers = await _dbContext.Answers.AsNoTracking().Where(x => x.QuestionId == questionId).ToListAsync();
-        return answers;
+        var options = await _dbContext.Options.AsNoTracking().Where(x => x.QuestionId == questionId).ToListAsync();
+        return options;
     }
 }

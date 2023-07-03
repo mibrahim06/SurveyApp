@@ -106,30 +106,30 @@ public static class DatabaseSeeding
     {
         if (!dbContext.Questions.Any())
         {
-            var answers1 = new Answer()
+            var answers1 = new Option()
             {
                 QuestionId = 1,
                 AnswerType = AnswerType.Text,
-                AnswerText = "Answer 1"
+                AnswerText = "Option 1"
             };
             
-            var answers2 = new Answer()
+            var answers2 = new Option()
             {
                 QuestionId = 1,
                 AnswerType = AnswerType.Text,
-                AnswerText = "Answer 2"
+                AnswerText = "Option 2"
             };
             
-            var answers3 = new Answer()
+            var answers3 = new Option()
             {
                 QuestionId = 2,
                 AnswerType = AnswerType.Text,
-                AnswerText = "Answer 3"
+                AnswerText = "Option 3"
             };
             
-            var answers = new List<Answer> {answers1, answers2, answers3};
+            var answers = new List<Option> {answers1, answers2, answers3};
             
-            dbContext.Answers.AddRange(answers);
+            dbContext.Options.AddRange(answers);
             dbContext.SaveChanges();
         }
     }

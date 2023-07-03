@@ -60,7 +60,7 @@ public class FakeQuestionRepository : IQuestionRepository
         throw new NotImplementedException();
     }
 
-    public Task<ICollection<Answer>> GetAnswersAsync(int questionId)
+    public Task<ICollection<Option>> GetOptionsAsync(int questionId)
     {
         throw new NotImplementedException();
     }

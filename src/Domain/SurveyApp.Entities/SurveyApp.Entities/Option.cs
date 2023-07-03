@@ -14,12 +14,12 @@ public class AnswerOption
 {
     public int Id { get; set; }
     public int AnswerId { get; set; }
-    public Answer Answer { get; set; }
+    public Option Option { get; set; }
     public string OptionText { get; set; }
     public int? RatingValue { get; set; }
 }
 
-public class Answer : IEntity
+public class Option : IEntity
 { 
     public int Id { get; set; }
     public int QuestionId { get; set; }
