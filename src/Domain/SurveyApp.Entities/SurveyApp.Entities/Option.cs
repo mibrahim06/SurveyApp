@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace SurveyApp.Entities;
 
-public enum AnswerType
+public enum OptionType
 {
     Text = 0,
     MultipleChoice = 1,
@@ -10,22 +10,10 @@ public enum AnswerType
     Rating = 3
 }
 
-public class AnswerOption
-{
-    public int Id { get; set; }
-    public int AnswerId { get; set; }
-    public Option Option { get; set; }
-    public string OptionText { get; set; }
-    public int? RatingValue { get; set; }
-}
-
 public class Option : IEntity
 { 
     public int Id { get; set; }
     public int QuestionId { get; set; }
     public Question Question { get; set; }
-    public AnswerType AnswerType { get; set; }
-    public string AnswerText { get; set; }
-    public List<AnswerOption> Options { get; set; }
-    public int? Rating { get; set; }
+    public OptionType OptionType { get; set; }
 }

@@ -40,7 +40,7 @@ public class EFQuestionRepository : IQuestionRepository
 
     public async Task<ICollection<Option>> GetOptionsAsync(int questionId)
     {
-        var options = await _dbContext.Options.AsNoTracking().Where(x => x.QuestionId == questionId).ToListAsync();
+        var options = await _dbContext.Options.Where(x => x.QuestionId == questionId).ToListAsync();
         return options;
     }
 }

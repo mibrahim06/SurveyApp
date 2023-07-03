@@ -6,6 +6,5 @@ public class Question : IEntity
     public string Title { get; set; }
     public int SurveyId { get; set; }
     public Survey Survey { get; set; }
-    public AnswerType AnswerType { get; set; }
     public ICollection<Option> Options { get; set; }
 }

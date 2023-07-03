@@ -5,7 +5,7 @@ namespace SurveyApp.DataTransferObjects.Incoming;
 public class CreateNewAnswerRequest
 { 
     public string? Text { get; set; }
-    public AnswerType Type { get; set; }
+    public OptionType Type { get; set; }
     public int Rating { get; set; }
     public int MultipleChoice { get; set; }
     public int SingleChoice { get; set; }

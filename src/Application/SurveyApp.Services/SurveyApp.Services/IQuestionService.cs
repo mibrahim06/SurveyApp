@@ -4,5 +4,5 @@ namespace SurveyApp.Services;
 
 public interface IQuestionService
 {
-    public Task<ICollection<Option>> GetAnswersAsync(int questionId);
+    public Task<ICollection<Option>> GetOptionsAsync(int questionId);
 }

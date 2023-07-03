@@ -55,15 +55,9 @@ public class SurveyController : Controller
     {
         var survey = await _surveyService.GetSurveyById(id);
         var questions = await _surveyService.GetQuestionsBySurveyId(id);
-        var questionIds = questions.Select(x => x.Id).ToList();
-        foreach (var questionId in questionIds)
+        foreach (var question in questions)
         {
-            var answers = await _questionService.GetAnswersAsync(questionId);
-            foreach (var answer in answers)
-            {
-                Console.WriteLine(answer.Id);
-            }
-            questions.First(x => x.Id == questionId).Options = answers;
+            question.Options = await _questionService.GetOptionsAsync(question.Id);
         }
         if (survey == null)
         {

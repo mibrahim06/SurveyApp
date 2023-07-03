@@ -81,19 +81,16 @@ public static class DatabaseSeeding
             var questions1 = new Question()
             {
                 Title = "Question 1?",
-                AnswerType = AnswerType.Text,
                 SurveyId = 1,
             };
             var questions2 = new Question()
             {
                 Title = "Question 2?",
-                AnswerType = AnswerType.Text,
                 SurveyId = 1,
             };
             var questions3 = new Question()
             {
                 Title = "Question 3?",
-                AnswerType = AnswerType.Text,
                 SurveyId = 2,
             };
             var questions = new List<Question> {questions1, questions2, questions3};
@@ -104,27 +101,24 @@ public static class DatabaseSeeding
     
     private static void SeedAnswers(SurveyDbContext dbContext)
     {
-        if (!dbContext.Questions.Any())
+        if (!dbContext.Options.Any())
         {
             var answers1 = new Option()
             {
                 QuestionId = 1,
-                AnswerType = AnswerType.Text,
-                AnswerText = "Option 1"
+                OptionType = OptionType.MultipleChoice
             };
             
             var answers2 = new Option()
             {
                 QuestionId = 1,
-                AnswerType = AnswerType.Text,
-                AnswerText = "Option 2"
+                OptionType = OptionType.Text
             };
             
             var answers3 = new Option()
             {
                 QuestionId = 2,
-                AnswerType = AnswerType.Text,
-                AnswerText = "Option 3"
+                OptionType = OptionType.Rating
             };
             
             var answers = new List<Option> {answers1, answers2, answers3};

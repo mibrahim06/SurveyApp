@@ -13,5 +13,6 @@ public class SurveyDbContext : DbContext
 
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {
+        
     }
 }
