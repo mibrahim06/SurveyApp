@@ -43,5 +43,16 @@ public class SurveyService : ISurveyService
         var surveysByUsername = surveys.Where(x => x.User.UserName == username).ToList();
         return surveysByUsername;
     }
-   
+
+    public List<Question> GetQuestionsBySurveyId(int surveyId)
+    {
+        var questions = _surveyRepository.GetQuestionsBySurveyId(surveyId).Result;
+        return questions;
+    }
+
+    public Survey GetSurveyById(int id)
+    {
+        var survey = _surveyRepository.GetByIdAsync(id).Result;
+        return survey;
+    }
 }

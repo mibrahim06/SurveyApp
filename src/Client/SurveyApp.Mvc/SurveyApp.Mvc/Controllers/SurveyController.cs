@@ -51,6 +51,18 @@ public class SurveyController : Controller
         return View();
     }
     
+    public IActionResult ShowSurvey(int id)
+    {
+        var survey = _surveyService.GetSurveyById(id);
+        var questons = _surveyService.GetQuestionsBySurveyId(id);
+        var model = new ShowSurveyModel
+        {
+            Survey = survey,
+            Questions = questons
+        };
+        return View(model);
+    }
+    
     [Authorize]
     public IActionResult CreateSurvey()
     {

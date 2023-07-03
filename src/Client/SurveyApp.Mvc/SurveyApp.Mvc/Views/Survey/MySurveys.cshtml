@@ -37,7 +37,8 @@ else
                 </td>
                 <td>
                     <a asp-action="SurveyResults" asp-route-id="@item.Id">Sonuçları Gör</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>|
+                    <a asp-action="ShowSurvey" asp-route-id="@item.Id">Anketi Göster</a>
                 </td>
             </tr>
         }

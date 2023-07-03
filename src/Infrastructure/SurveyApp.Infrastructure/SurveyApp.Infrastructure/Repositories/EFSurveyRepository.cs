@@ -44,4 +44,16 @@ public class EFSurveyRepository : ISurveyRepository
         var surveys = await _dbContext.Surveys.AsNoTracking().Where(x => x.UserId == userId).ToListAsync();
         return surveys;
     }
+
+    public async Task<Survey> GetSurveyById(int id)
+    {
+        var survey = await _dbContext.Surveys.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        return survey;
+    }
+
+    public async  Task<List<Question>> GetQuestionsBySurveyId(int surveyId)
+    {
+        var questions = await _dbContext.Questions.AsNoTracking().Where(x => x.SurveyId == surveyId).ToListAsync();
+        return questions;
+    }
 }
