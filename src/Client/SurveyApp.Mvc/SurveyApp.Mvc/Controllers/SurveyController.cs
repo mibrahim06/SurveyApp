@@ -27,16 +27,13 @@ public class SurveyController : Controller
     public IActionResult MySurveys()
     {
         var user = _userService.GetUser(User.FindFirstValue(ClaimTypes.NameIdentifier));
-        Console.WriteLine("=======================");
-        Console.WriteLine( "Name Identifier: " + user.Name);
-        Console.WriteLine( "User Id: " + user.Id);
-        Console.WriteLine("=======================");
         var surveyDisplayResponses = _surveyService.GetSurveyDisplayResponsebByUserId(user.Id);
         return View(surveyDisplayResponses);
     }
 
     public IActionResult SurveyResults()
     {
+        //TODO: Implement SurveyResults
         throw new NotImplementedException();
     }
 
@@ -92,6 +89,7 @@ public class SurveyController : Controller
     [HttpGet]
     public IActionResult NotFoundSurvey()
     {
+        // TODO: Make this view look better
         return View();
     }
        
