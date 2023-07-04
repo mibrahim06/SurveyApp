@@ -16,12 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Pages/Components/MultipleChoiceQuestion/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29tcG9uZW50cy9NdWx0aXBsZUNob2ljZVF1ZXN0aW9uL0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Home/Secured.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9TZWN1cmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Components/MultipleChoiceQuestion/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTXVsdGlwbGVDaG9pY2VRdWVzdGlvbi9EZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Components/SingleChoiceQuestion/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvU2luZ2xlQ2hvaWNlUXVlc3Rpb24vRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Error.cshtml]

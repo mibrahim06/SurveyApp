@@ -81,13 +81,13 @@ public static class DatabaseSeeding
             
             var questions1 = new Question()
             {
-                Title = "Question 1?",
+                Title = "Hangi programlama dillerini kullandiniz?",
                 SurveyId = 1,
-                OptionType = OptionType.Rating
+                OptionType = OptionType.MultipleChoice
             };
             var questions2 = new Question()
             {
-                Title = "Question 2?",
+                Title = "En iyi kulladiginiz programlama dili?",
                 SurveyId = 1,
                 OptionType = OptionType.SingleChoice
             };
@@ -95,7 +95,7 @@ public static class DatabaseSeeding
             {
                 Title = "Question 3?",
                 SurveyId = 2,
-                OptionType = OptionType.MultipleChoice
+                OptionType = OptionType.Rating
             };
             var questions = new List<Question> {questions1, questions2, questions3};
             dbContext.Questions.AddRange(questions);
@@ -110,21 +110,27 @@ public static class DatabaseSeeding
             var option1 = new Option()
             {
                 QuestionId = 1,
-                Text = "option1"
+                Text = "java"
             };
             var option2 = new Option()
             {
                 QuestionId = 1,
-                Text = "option2"
+                Text = "python"
             };
             
             var option3 = new Option()
             {
                 QuestionId = 2,
-                Text = "option3"
+                Text = "python"
             };
             
-            var answers = new List<Option> {option1, option2, option3};
+            var option4 = new Option()
+            {
+                QuestionId = 2,
+                Text = "java"
+            };
+            
+            var answers = new List<Option> {option1, option2, option3, option4};
             
             dbContext.Options.AddRange(answers);
             dbContext.SaveChanges();
