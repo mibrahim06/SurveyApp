@@ -97,7 +97,20 @@ public static class DatabaseSeeding
                 SurveyId = 2,
                 OptionType = OptionType.Rating
             };
-            var questions = new List<Question> {questions1, questions2, questions3};
+            var questions4 = new Question()
+            {
+                Title = "Python programlama dilini hangi derecede biliyorsunuz?",
+                SurveyId = 1,
+                OptionType = OptionType.Rating
+            };
+            var questions5 = new Question()
+            {
+                Title = "Eklemek istedikleriniz?",
+                SurveyId = 1,
+                OptionType = OptionType.Text
+            };
+            
+            var questions = new List<Question> {questions1, questions2, questions3, questions4, questions5};
             dbContext.Questions.AddRange(questions);
             dbContext.SaveChanges();
         }

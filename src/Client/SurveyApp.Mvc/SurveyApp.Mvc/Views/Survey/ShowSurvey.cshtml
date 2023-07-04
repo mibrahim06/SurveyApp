@@ -1,9 +1,11 @@
+@using SurveyApp.Entities
 @model ShowSurveyModel
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
     var questionNumber = 1;
+    var viewComponentName = "";
 }
 
 <h2>Anket adı: @Model.Survey.Name</h2>
@@ -11,10 +13,23 @@
 <div class="row justify-content-center">
     @foreach (var question in Model.Questions)
     {
+        @if (question.OptionType == OptionType.MultipleChoice)
+        {
+            viewComponentName = "MultipleChoiceQuestion";
+        } else if (question.OptionType == OptionType.SingleChoice)
+        {
+            viewComponentName = "SingleChoiceQuestion";
+        } else if (question.OptionType == OptionType.Rating)
+        {
+            viewComponentName = "RatingQuestion";
+        } else if (question.OptionType == OptionType.Text)
+        {
+            viewComponentName = "TextQuestion";
+        }
         <p>@questionNumber) @question.Title</p> questionNumber++;
         <br/>
         <div class="row" style="margin-left: 30px;">
-            @await Component.InvokeAsync("MultipleChoiceQuestion", new { questionId = question.Id })
+            @await Component.InvokeAsync(viewComponentName, new { questionId = question.Id })
         </div>
     }
 </div>

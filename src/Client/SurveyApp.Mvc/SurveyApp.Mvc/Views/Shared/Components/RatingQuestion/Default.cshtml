@@ -1,0 +1,11 @@
+@model System.Collections.Generic.ICollection<SurveyApp.Entities.Option>
+
+<label for="customRange1" class="form-label">Değer Seçin:</label>
+<input type="range" class="form-range" id="customRange1" min="0" max="10" onchange="showValue(this.value)">
+<p id="selectedValue"></p>
+
+<script>
+  function showValue(value) {
+    document.getElementById("selectedValue").innerText = "Seçilen Değer: " + value;
+  }
+</script>

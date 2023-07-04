@@ -32,8 +32,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvTXVsdGlwbGVDaG9pY2VRdWVzdGlvbi9EZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Components/RatingQuestion/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvUmF0aW5nUXVlc3Rpb24vRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Components/SingleChoiceQuestion/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvU2luZ2xlQ2hvaWNlUXVlc3Rpb24vRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Components/TextQuestion/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvVGV4dFF1ZXN0aW9uL0RlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/Views/Shared/Error.cshtml]
