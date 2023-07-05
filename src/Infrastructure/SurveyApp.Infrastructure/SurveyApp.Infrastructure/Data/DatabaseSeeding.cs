@@ -9,9 +9,11 @@ public static class DatabaseSeeding
         SeedUsers(dbContext);
         SeedSurveys(dbContext);
         SeedQuestions(dbContext);
+        SeedOptions(dbContext);
         SeedAnswers(dbContext);
     }
 
+   
     private static void SeedUsers(SurveyDbContext dbContext)
     {
         if (!dbContext.Users.Any())
@@ -116,7 +118,7 @@ public static class DatabaseSeeding
         }
     }
     
-    private static void SeedAnswers(SurveyDbContext dbContext)
+    private static void SeedOptions(SurveyDbContext dbContext)
     {
         if (!dbContext.Options.Any())
         {
@@ -148,5 +150,40 @@ public static class DatabaseSeeding
             dbContext.Options.AddRange(answers);
             dbContext.SaveChanges();
         }
+    }
+    
+    private static void SeedAnswers(SurveyDbContext dbContext)
+    {
+        var answer1 = new Answer()
+        {
+            QuestionId = 1,
+            Text = "python"
+        };
+        
+        var answer2 = new Answer()
+        {
+            QuestionId = 1,
+            Text = "java"
+        };
+        var answer3 = new Answer()
+        {
+            QuestionId = 2,
+            Text = "python"
+        };
+        var answer4 = new Answer()
+        {
+            QuestionId = 4,
+            Text = "5"
+        };
+        var answer5 = new Answer()
+        {
+            QuestionId = 5,
+            Text = "eklemek istedigim bir sey yok"
+        };
+        
+        var answers = new List<Answer> {answer1, answer2, answer3, answer4, answer5};
+        
+        dbContext.Answers.AddRange(answers);
+        dbContext.SaveChanges();
     }
 }

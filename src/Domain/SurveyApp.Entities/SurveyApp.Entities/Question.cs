@@ -16,4 +16,5 @@ public class Question : IEntity
     public Survey Survey { get; set; }
     public OptionType OptionType { get; set; }
     public ICollection<Option> Options { get; set; }
+    public ICollection<Answer> Answers { get; set; }
 }
