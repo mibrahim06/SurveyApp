@@ -43,4 +43,10 @@ public class EFQuestionRepository : IQuestionRepository
         var options = await _dbContext.Options.Where(x => x.QuestionId == questionId).ToListAsync();
         return options;
     }
+
+    public async Task<ICollection<Answer>> GetAnswersAsync(int questionId)
+    {
+        var answers = await _dbContext.Answers.Where(x => x.QuestionId == questionId).ToListAsync();
+        return answers;
+    }
 }

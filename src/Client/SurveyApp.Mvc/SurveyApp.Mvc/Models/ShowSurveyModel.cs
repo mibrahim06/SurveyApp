@@ -6,5 +6,5 @@ public class ShowSurveyModel
 {
     public Survey Survey { get; set; }
     public List<Question> Questions { get; set; }
-    public List<Option> Answers { get; set; }
+    public List<Option> Options { get; set; }
 }

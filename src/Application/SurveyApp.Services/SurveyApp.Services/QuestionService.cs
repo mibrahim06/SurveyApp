@@ -18,4 +18,10 @@ public class QuestionService : IQuestionService
         var answers = await _questionRepository.GetOptionsAsync(questionId);
         return answers;
     }
+    
+    public async Task<ICollection<Answer>> GetAnswersAsync(int questionId)
+    {
+        var answers = await _questionRepository.GetAnswersAsync(questionId);
+        return answers;
+    }
 }
