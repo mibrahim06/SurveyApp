@@ -154,34 +154,45 @@ public static class DatabaseSeeding
     
     private static void SeedAnswers(SurveyDbContext dbContext)
     {
-        var answer1 = new Answer()
+        var answer1 = new MultipleChoiceAnswer()
         {
             QuestionId = 1,
-            Text = "python"
+            options = new List<Option>()
+            {
+                new Option()
+                {
+                    QuestionId = 1,
+                    Text = "python"
+                },
+                new Option()
+                {
+                    QuestionId = 1,
+                    Text = "java"
+                }
+            }
         };
         
-        var answer2 = new Answer()
-        {
-            QuestionId = 1,
-            Text = "java"
-        };
-        var answer3 = new Answer()
+        var answer2 = new SingleChoiceAnswer()
         {
             QuestionId = 2,
-            Text = "python"
+            option = new Option()
+            {
+                QuestionId = 2,
+                Text = "python"
+            }
         };
-        var answer4 = new Answer()
+        var answer3 = new RatingAnswer()
         {
             QuestionId = 4,
-            Text = "5"
+            Rating = 5
         };
-        var answer5 = new Answer()
+        var answer4 = new TextAnswer()
         {
             QuestionId = 5,
-            Text = "eklemek istedigim bir sey yok"
+            Text = "test"
         };
         
-        var answers = new List<Answer> {answer1, answer2, answer3, answer4, answer5};
+        var answers = new List<Answer> {answer1, answer2, answer3, answer4};
         
         dbContext.Answers.AddRange(answers);
         dbContext.SaveChanges();
