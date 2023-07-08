@@ -12,13 +12,6 @@ public class SurveyDbContext : DbContext
     
     public DbSet<Answer> Answers { get; set; }
     
-    public DbSet<SingleChoiceAnswer> SingleChoiceAnswers { get; set; }
-
-    public DbSet<MultipleChoiceAnswer> MultipleChoiceAnswers { get; set; }
-    
-    public DbSet<TextAnswer> TextAnswers { get; set; }
-    
-    public DbSet<RatingAnswer> RatingAnswers { get; set; }
 
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {

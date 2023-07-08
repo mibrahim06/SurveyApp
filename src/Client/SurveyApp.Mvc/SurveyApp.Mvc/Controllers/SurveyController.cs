@@ -31,16 +31,17 @@ public class SurveyController : Controller
         return View(surveyDisplayResponses);
     }
 
+    [Authorize]
     public  async Task<IActionResult> SurveyResults(int id)
     {
         var survey = await _surveyService.GetSurveyById(id);
         var questions = await _surveyService.GetQuestionsBySurveyId(id);
-        var answers = await _questionService.GetAnswersAsync(id);
+       
         var SurveyResultsModel = new SurveyResultsModel
         {
             Survey = survey,
             Questions = questions,
-            Answers = answers
+           
         };
         return View(SurveyResultsModel);
     }

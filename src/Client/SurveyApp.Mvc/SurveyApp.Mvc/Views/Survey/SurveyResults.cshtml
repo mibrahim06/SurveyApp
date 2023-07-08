@@ -1,3 +1,51 @@
+@using SurveyApp.Entities
 @model SurveyResultsModel
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+    var questionNumber = 1;
+    var singleChoiceResultNumber = 1;
+    var ratingResultNumber = 1;
+    var textResultNumber = 1;
+    var multipleChoiceResultNumber = 1;
+    var viewComponentName = "";
+}
 
 <h4>@Model.Survey.Name anketinin sonuçları..</h4>
+
+<div class="row justify-content-center">
+    @foreach (var question in Model.Questions)
+    {
+        <p>@questionNumber) @question.Title</p> questionNumber++;
+        <br/>
+        <div class="row" style="margin-left: 30px;">
+         
+            @if (question.OptionType == OptionType.MultipleChoice)
+            {
+                <p>Multiple Choice Results:</p> <br/>
+                <p>@multipleChoiceResultNumber) </p> multipleChoiceResultNumber++;
+                <br/>
+            }
+            else if (question.OptionType == OptionType.SingleChoice)
+            {
+                <p>Single Choice Results</p>
+                <p>@singleChoiceResultNumber) </p>
+                singleChoiceResultNumber++;
+                <br/>
+              
+            }
+            else if (question.OptionType == OptionType.Rating)
+            {
+                <p>Rating results</p>
+                <p>@ratingResultNumber) </p> ratingResultNumber++;
+                <br/>
+            }
+            else if (question.OptionType == OptionType.Text)
+            {
+                <p>Text results</p>
+                <p>@textResultNumber) </p> textResultNumber++;
+                <br/>
+            }
+        </div>
+    }
+</div>

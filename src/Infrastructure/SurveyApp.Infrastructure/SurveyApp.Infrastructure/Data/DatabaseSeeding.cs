@@ -154,42 +154,59 @@ public static class DatabaseSeeding
     
     private static void SeedAnswers(SurveyDbContext dbContext)
     {
-        var answer1 = new MultipleChoiceAnswer()
+        var answer1 = new Answer()
         {
             QuestionId = 1,
-            options = new List<Option>()
+            Options =  new List<Option>()
             {
-                new Option()
-                {
-                    QuestionId = 1,
-                    Text = "python"
-                },
                 new Option()
                 {
                     QuestionId = 1,
                     Text = "java"
+                },
+                new Option()
+                {
+                    QuestionId = 1,
+                    Text = "python"
                 }
             }
         };
         
-        var answer2 = new SingleChoiceAnswer()
+        var answer2 = new Answer()
         {
             QuestionId = 2,
-            option = new Option()
+            Options =  new List<Option>()
             {
-                QuestionId = 2,
-                Text = "python"
+                new Option()
+                {
+                    QuestionId = 2,
+                    Text = "python"
+                }
             }
         };
-        var answer3 = new RatingAnswer()
+        var answer3 = new Answer()
         {
             QuestionId = 4,
-            Rating = 5
+            Options =  new List<Option>()
+            {
+                new Option()
+                {
+                    QuestionId = 4,
+                    Text = "5"
+                }
+            }
         };
-        var answer4 = new TextAnswer()
+        var answer4 = new Answer()
         {
             QuestionId = 5,
-            Text = "test"
+            Options = new List<Option>()
+            {
+                new Option()
+                {
+                    QuestionId = 5,
+                    Text = "test"
+                }
+            }
         };
         
         var answers = new List<Answer> {answer1, answer2, answer3, answer4};

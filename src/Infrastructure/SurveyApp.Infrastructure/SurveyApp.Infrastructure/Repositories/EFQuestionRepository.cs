@@ -30,11 +30,13 @@ public class EFQuestionRepository : IQuestionRepository
 
     public Task UpdateAsync(Question entity)
     {
+        // TODO: Implement this method
         throw new NotImplementedException();
     }
 
     public Task DeleteAsync(Question entity)
     {
+        // TODO: Implement this method
         throw new NotImplementedException();
     }
 
