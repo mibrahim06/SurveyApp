@@ -22,10 +22,13 @@
          
             @if (modelQuestion.question.OptionType == OptionType.MultipleChoice)
             {
-                <p>Multiple Choice Result:</p> <br/>
-                <p>@multipleChoiceResultNumber) </p> multipleChoiceResultNumber++;
-                <br/>
-                
+                <p>Multiple Choice Result: @modelQuestion.answerCount</p> <br/>
+           
+                @foreach(var answer in modelQuestion.Answers)
+                {
+                    <p>@multipleChoiceResultNumber)  @answer.Text </p>
+                    multipleChoiceResultNumber++;
+                }
             }
             else if (modelQuestion.question.OptionType == OptionType.SingleChoice)
             {

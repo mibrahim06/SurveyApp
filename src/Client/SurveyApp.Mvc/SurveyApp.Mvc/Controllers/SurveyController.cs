@@ -44,10 +44,12 @@ public class SurveyController : Controller
         
         foreach (var question in questions)
         {
+            var answers = await _questionService.GetAnswersAsync(question.Id);
             var questionAnswer = new QuestionAnswerModel
             {
                 question = question,
-                Answers = await _questionService.GetAnswersAsync(question.Id),
+                Answers = answers,
+                answerCount = answers.Count
             };
             surveyResults.questionAnswers.Add(questionAnswer);
         }

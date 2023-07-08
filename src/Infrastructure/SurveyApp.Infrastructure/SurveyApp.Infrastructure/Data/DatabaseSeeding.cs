@@ -151,60 +151,43 @@ public static class DatabaseSeeding
             dbContext.SaveChanges();
         }
     }
-    
+
     private static void SeedAnswers(SurveyDbContext dbContext)
     {
-        var answer1 = new Answer()
+        if (!dbContext.Answers.Any())
         {
-            QuestionId = 1,
-            Results = new List<Result>()
+            var answer1 = new Answer()
             {
-                new Result()
-                {
-                    AnswerId = 1,
-                    Text = "java"
-                },
-                new Result()
-                {
-                    AnswerId = 2,
-                    Text = "python"
-                }
-            }
-        };
-        
-        var answer2 = new Answer()
-        {
-            QuestionId = 2,
-            Results = new List<Result>()
+                QuestionId = 1,
+                Text = "java"
+            };
+            var answer5 = new Answer()
             {
-                new Result()
-                {
-                    AnswerId = 2,
-                    Text = "python"
-                }
-            }
-        };
-        var answer3 = new Answer()
-        {
-            QuestionId = 4,
-            Results =  new List<Result>()
+                QuestionId = 1,
+                Text = "python"
+            };
+
+            var answer2 = new Answer()
             {
-                new Result()
-                {
-                    AnswerId = 4,
-                    Text = "python"
-                }
-            }
-        };
-        var answer4 = new Answer()
-        {
-            QuestionId = 5,
-            Results = new List<Result>() {new Result() {AnswerId = 5, Text = "python"}}
-        };
-        
-        var answers = new List<Answer> {answer1, answer2, answer3, answer4};
-        
-        dbContext.Answers.AddRange(answers);
-        dbContext.SaveChanges();
+                QuestionId = 2,
+                Text = "python"
+            };
+            var answer3 = new Answer()
+            {
+                QuestionId = 4,
+                Text = "5"
+                
+            };
+            var answer4 = new Answer()
+            {
+                QuestionId = 5,
+                Text = "test"
+            };
+
+            var answers = new List<Answer> { answer1, answer2, answer3, answer4, answer5};
+
+            dbContext.Answers.AddRange(answers);
+            dbContext.SaveChanges();
+        }
     }
 }
