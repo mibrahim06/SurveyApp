@@ -36,14 +36,22 @@ public class SurveyController : Controller
     {
         var survey = await _surveyService.GetSurveyById(id);
         var questions = await _surveyService.GetQuestionsBySurveyId(id);
-       
-        var SurveyResultsModel = new SurveyResultsModel
+        var surveyResults = new SurveyResultModel
         {
-            Survey = survey,
-            Questions = questions,
-           
+            surveyTitle = survey.Name,
+            questionAnswers = new List<QuestionAnswerModel>()
         };
-        return View(SurveyResultsModel);
+        
+        foreach (var question in questions)
+        {
+            var questionAnswer = new QuestionAnswerModel
+            {
+                question = question,
+                Answers = await _questionService.GetAnswersAsync(question.Id),
+            };
+            surveyResults.questionAnswers.Add(questionAnswer);
+        }
+        return View(surveyResults);
     }
 
     [HttpGet]

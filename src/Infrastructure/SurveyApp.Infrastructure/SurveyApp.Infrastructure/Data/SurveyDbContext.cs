@@ -12,6 +12,7 @@ public class SurveyDbContext : DbContext
     
     public DbSet<Answer> Answers { get; set; }
     
+    public DbSet<Result> Results { get; set; }
 
     public SurveyDbContext(DbContextOptions<SurveyDbContext> options) : base(options)
     {

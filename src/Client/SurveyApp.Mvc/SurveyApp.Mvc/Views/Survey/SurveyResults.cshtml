@@ -1,5 +1,5 @@
 @using SurveyApp.Entities
-@model SurveyResultsModel
+@model SurveyResultModel
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
@@ -11,36 +11,38 @@
     var viewComponentName = "";
 }
 
-<h4>@Model.Survey.Name anketinin sonuçları..</h4>
+<h4>@Model.surveyTitle anketinin sonuçları..</h4>
 
 <div class="row justify-content-center">
-    @foreach (var question in Model.Questions)
+    @foreach (var modelQuestion in Model.questionAnswers)
     {
-        <p>@questionNumber) @question.Title</p> questionNumber++;
+        <p>@questionNumber) @modelQuestion.question.Title</p> questionNumber++;
         <br/>
         <div class="row" style="margin-left: 30px;">
          
-            @if (question.OptionType == OptionType.MultipleChoice)
+            @if (modelQuestion.question.OptionType == OptionType.MultipleChoice)
             {
-                <p>Multiple Choice Results:</p> <br/>
+                <p>Multiple Choice Result:</p> <br/>
                 <p>@multipleChoiceResultNumber) </p> multipleChoiceResultNumber++;
                 <br/>
+                
             }
-            else if (question.OptionType == OptionType.SingleChoice)
+            else if (modelQuestion.question.OptionType == OptionType.SingleChoice)
             {
-                <p>Single Choice Results</p>
+               
                 <p>@singleChoiceResultNumber) </p>
                 singleChoiceResultNumber++;
                 <br/>
+                
               
             }
-            else if (question.OptionType == OptionType.Rating)
+            else if (modelQuestion.question.OptionType == OptionType.Rating)
             {
                 <p>Rating results</p>
                 <p>@ratingResultNumber) </p> ratingResultNumber++;
                 <br/>
             }
-            else if (question.OptionType == OptionType.Text)
+            else if (modelQuestion.question.OptionType == OptionType.Text)
             {
                 <p>Text results</p>
                 <p>@textResultNumber) </p> textResultNumber++;

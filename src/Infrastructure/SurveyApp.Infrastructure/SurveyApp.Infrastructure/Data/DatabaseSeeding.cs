@@ -157,16 +157,16 @@ public static class DatabaseSeeding
         var answer1 = new Answer()
         {
             QuestionId = 1,
-            Options =  new List<Option>()
+            Results = new List<Result>()
             {
-                new Option()
+                new Result()
                 {
-                    QuestionId = 1,
+                    AnswerId = 1,
                     Text = "java"
                 },
-                new Option()
+                new Result()
                 {
-                    QuestionId = 1,
+                    AnswerId = 2,
                     Text = "python"
                 }
             }
@@ -175,11 +175,11 @@ public static class DatabaseSeeding
         var answer2 = new Answer()
         {
             QuestionId = 2,
-            Options =  new List<Option>()
+            Results = new List<Result>()
             {
-                new Option()
+                new Result()
                 {
-                    QuestionId = 2,
+                    AnswerId = 2,
                     Text = "python"
                 }
             }
@@ -187,26 +187,19 @@ public static class DatabaseSeeding
         var answer3 = new Answer()
         {
             QuestionId = 4,
-            Options =  new List<Option>()
+            Results =  new List<Result>()
             {
-                new Option()
+                new Result()
                 {
-                    QuestionId = 4,
-                    Text = "5"
+                    AnswerId = 4,
+                    Text = "python"
                 }
             }
         };
         var answer4 = new Answer()
         {
             QuestionId = 5,
-            Options = new List<Option>()
-            {
-                new Option()
-                {
-                    QuestionId = 5,
-                    Text = "test"
-                }
-            }
+            Results = new List<Result>() {new Result() {AnswerId = 5, Text = "python"}}
         };
         
         var answers = new List<Answer> {answer1, answer2, answer3, answer4};
