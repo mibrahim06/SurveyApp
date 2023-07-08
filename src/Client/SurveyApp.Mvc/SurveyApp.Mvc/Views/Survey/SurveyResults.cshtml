@@ -22,34 +22,66 @@
          
             @if (modelQuestion.question.OptionType == OptionType.MultipleChoice)
             {
-                <p>Multiple Choice Result: @modelQuestion.answerCount</p> <br/>
-           
-                @foreach(var answer in modelQuestion.Answers)
+                @if (modelQuestion.answerCount == 0)
                 {
-                    <p>@multipleChoiceResultNumber)  @answer.Text </p>
-                    multipleChoiceResultNumber++;
+                    <p>Hiç cevap bulunmamaktadır.</p>
+                }
+                else
+                {
+                    @foreach(var answer in modelQuestion.Answers)
+                    {
+                        <p>@multipleChoiceResultNumber)  @answer.Text </p>
+                        multipleChoiceResultNumber++;
+                    }
                 }
             }
             else if (modelQuestion.question.OptionType == OptionType.SingleChoice)
             {
-               
-                <p>@singleChoiceResultNumber) </p>
-                singleChoiceResultNumber++;
-                <br/>
-                
-              
+                @if (modelQuestion.answerCount == 0)
+                {
+                    <p>Hiç cevap bulunmamaktadır.</p>
+                }
+                else
+                {
+                    @foreach(var answer in modelQuestion.Answers)
+                        {
+                            <p>@singleChoiceResultNumber)@answer.Text</p>
+                            singleChoiceResultNumber++;
+                            <br/>
+                        }
+                }
             }
             else if (modelQuestion.question.OptionType == OptionType.Rating)
             {
-                <p>Rating results</p>
-                <p>@ratingResultNumber) </p> ratingResultNumber++;
-                <br/>
+                @if (modelQuestion.answerCount == 0)
+                {
+                    <p>Hiç cevap bulunmamaktadır.</p>
+                }
+                else
+                {
+                    @foreach (var answer in modelQuestion.Answers)
+                    {
+                        <p>@ratingResultNumber) @answer.Text </p>
+                        ratingResultNumber++;
+                        <br/>
+                    }
+                }
             }
             else if (modelQuestion.question.OptionType == OptionType.Text)
             {
-                <p>Text results</p>
-                <p>@textResultNumber) </p> textResultNumber++;
-                <br/>
+                @if (modelQuestion.answerCount == 0)
+                {
+                    <p>Hiç cevap bulunmamaktadır.</p>
+                }
+                else
+                {
+                    @foreach (var answer in modelQuestion.Answers)
+                    {
+                        <p>@textResultNumber) @answer.Text</p>
+                        textResultNumber++;
+                        <br/>
+                    }
+                }
             }
         </div>
     }
