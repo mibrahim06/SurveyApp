@@ -47,11 +47,24 @@ public class SurveyController : Controller
         foreach (var question in questions)
         {
             var answers = await _questionService.GetAnswersAsync(question.Id);
+            var options = await _questionService.GetOptionsAsync(question.Id);
+            var responseCountModels = new List<QuestionAnswerCountModel>();
+            foreach(var option in options){
+                var responseCount = await _questionService.GetOptionResponseCount(option.Id);
+                var optionText = option.Text;
+                var responseModel = new QuestionAnswerCountModel()
+                {
+                    Count = responseCount,
+                    Text = optionText
+                };
+                responseCountModels.Add(responseModel);
+            }
             var questionAnswer = new QuestionAnswerModel
             {
                 question = question,
                 Answers = answers,
-                answerCount = answers.Count
+                answerCount = answers.Count,
+                responseCountModels = responseCountModels
             };
             surveyResults.questionAnswers.Add(questionAnswer);
         }

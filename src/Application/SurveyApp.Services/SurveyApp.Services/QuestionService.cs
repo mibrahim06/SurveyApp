@@ -49,6 +49,12 @@ public class QuestionService : IQuestionService
         await _questionRepository.CreateAnswer(answer);
     }
 
+    public async Task<int> GetOptionResponseCount(int optionId)
+    {
+        var count = await _questionRepository.GetOptionResponseCount(optionId);
+        return count;
+    }
+
     private OptionType GetOptionType(string optionType)
     {
         return optionType switch

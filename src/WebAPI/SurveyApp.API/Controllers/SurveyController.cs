@@ -94,7 +94,5 @@ namespace SurveyApp.API.Controllers
             await _questionService.CreateAnswer(response);
             return Ok();
         }
-        
-
     }
 }

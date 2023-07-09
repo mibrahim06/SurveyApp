@@ -28,6 +28,10 @@
                 }
                 else
                 {
+                    @foreach (var counter in modelQuestion.responseCountModels)
+                    {
+                        <p>@counter.Text Sayısı = @counter.Count</p>
+                    }
                     @foreach(var answer in modelQuestion.Answers)
                     {
                         <p>@multipleChoiceResultNumber)  @answer.Text </p>

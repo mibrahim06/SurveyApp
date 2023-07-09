@@ -84,4 +84,9 @@ public class FakeQuestionRepository : IQuestionRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<int> GetOptionResponseCount(int optionId)
+    {
+        throw new NotImplementedException();
+    }
 }
