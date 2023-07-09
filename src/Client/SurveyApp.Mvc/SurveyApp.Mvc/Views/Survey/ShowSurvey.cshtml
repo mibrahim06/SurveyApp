@@ -13,6 +13,7 @@
     <div class="row justify-content-center">
         @foreach (var question in Model.Questions)
         {
+            // TODO: Find a better way to do this
             @if (question.OptionType == OptionType.MultipleChoice)
             {
                 viewComponentName = "MultipleChoiceQuestion";

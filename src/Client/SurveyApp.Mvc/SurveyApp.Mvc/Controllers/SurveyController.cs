@@ -7,6 +7,7 @@ using SurveyApp.DataTransferObjects.Incoming;
 using SurveyApp.DataTransferObjects.Outgoing;
 using SurveyApp.Entities;
 using SurveyApp.Mvc.Models;
+using SurveyApp.Mvc.ViewComponents;
 using SurveyApp.Services;
 
 namespace SurveyApp.Mvc.Controllers;
@@ -96,7 +97,7 @@ public class SurveyController : Controller
         var model = new ShowSurveyModel
         {
             Survey = survey,
-            Questions = questions
+            Questions = questions,
         };
         return View(model);
     }
@@ -104,7 +105,7 @@ public class SurveyController : Controller
     [HttpPost("Survey/AddSurveyAnswer")]
     public async Task<IActionResult> AddSurveyAnswer(ShowSurveyModel model)
     {
-        return View();
+        return View(model);
     }
     
     [Authorize]

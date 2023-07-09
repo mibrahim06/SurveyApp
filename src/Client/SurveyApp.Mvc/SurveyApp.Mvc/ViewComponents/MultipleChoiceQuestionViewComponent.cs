@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SurveyApp.Mvc.Models;
 using SurveyApp.Services;
 
 namespace SurveyApp.Mvc.ViewComponents;
@@ -14,6 +15,10 @@ public class MultipleChoiceQuestionViewComponent : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync(int questionId)
     {
         var options = await _questionService.GetOptionsAsync(questionId);
-        return View(options);
+        var model = new AnswerModel()
+        {
+            Options = options
+        };
+        return View(model);
     }
 }
