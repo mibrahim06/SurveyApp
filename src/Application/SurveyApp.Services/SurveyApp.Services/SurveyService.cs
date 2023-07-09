@@ -55,4 +55,23 @@ public class SurveyService : ISurveyService
         var survey = await _surveyRepository.GetByIdAsync(id);
         return survey;
     }
+
+    public async Task<int> CreateSurvey(CreateSurveyRequest createSurveyRequest)
+    {
+        var surveyName = createSurveyRequest.Name;
+        var SurveyUserId = createSurveyRequest.UserId;
+        var survey = new Survey
+        {
+            Name = surveyName,
+            UserId = SurveyUserId
+        };
+        var surveyId = await _surveyRepository.CreateSurvey(survey);
+        return surveyId;
+    }
+
+    public async  Task<List<Survey>> GetSurveys()
+    {
+        var surveys = await _surveyRepository.GetSurveys();
+        return surveys;
+    }
 }

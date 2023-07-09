@@ -101,4 +101,9 @@ public class FakeUserRepository : IUserRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<List<int>> GetAllUserIds()
+    {
+        throw new NotImplementedException();
+    }
 }

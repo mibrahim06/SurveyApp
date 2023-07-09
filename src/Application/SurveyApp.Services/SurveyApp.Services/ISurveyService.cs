@@ -13,4 +13,8 @@ public interface  ISurveyService
     public Task<IList<Survey>> GetSurveysByUsername(string username);
     public Task<List<Question>> GetQuestionsBySurveyId(int surveyId);
     public Task<Survey> GetSurveyById(int id);
+    
+    public Task<int> CreateSurvey(CreateSurveyRequest createSurveyRequest);
+
+    public Task<List<Survey>> GetSurveys();
 }

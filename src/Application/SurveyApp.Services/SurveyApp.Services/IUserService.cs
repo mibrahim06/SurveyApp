@@ -12,4 +12,5 @@ public interface IUserService
     Task<IEnumerable<User>> GetAll();
     public Task<int> GetUserId(string nameIdentifier);
     public Task<User> GetUser(string nameIdentifier);
+    public Task<List<int>> GetAllUserIds();
 }

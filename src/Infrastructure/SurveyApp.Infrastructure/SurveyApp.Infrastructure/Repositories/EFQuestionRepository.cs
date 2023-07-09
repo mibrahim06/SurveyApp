@@ -51,5 +51,17 @@ public class EFQuestionRepository : IQuestionRepository
         var answers = await _dbContext.Answers.Where(x => x.QuestionId == questionId).ToListAsync();
         return answers;
     }
-    
+
+    public async Task<int> CreateQuestion(Question question)
+    {
+        var addingQuestion = await _dbContext.Questions.AddAsync(question);
+        await _dbContext.SaveChangesAsync();
+        return addingQuestion.Entity.Id;
+    }
+
+    public async Task CreateOption(Option option)
+    {
+        var addingOption = await _dbContext.Options.AddAsync(option);
+        await _dbContext.SaveChangesAsync();
+    }
 }

@@ -69,4 +69,14 @@ public class FakeSurveyRepository : ISurveyRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<List<Survey>> GetSurveys()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<int> CreateSurvey(Survey survey)
+    {
+        throw new NotImplementedException();
+    }
 }

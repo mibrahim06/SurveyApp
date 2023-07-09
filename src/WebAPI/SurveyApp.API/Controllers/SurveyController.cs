@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SurveyApp.DataTransferObjects.Incoming;
+using SurveyApp.Entities;
+using SurveyApp.Services;
 
 namespace SurveyApp.API.Controllers
 {
@@ -11,10 +14,67 @@ namespace SurveyApp.API.Controllers
     [ApiController]
     public class SurveyController : ControllerBase
     {
-        [HttpGet]
-        public Task<IActionResult> GetSurveys()
+        private readonly ISurveyService _surveyService;
+        private readonly IUserService _userService;
+        private readonly IQuestionService _questionService;
+        
+        public SurveyController(ISurveyService surveyService, IUserService userService, IQuestionService questionService)
         {
-            
+            _surveyService = surveyService;
+            _userService = userService;
+            _questionService = questionService;
         }
+        
+        [HttpGet]
+        public async  Task<IActionResult> GetSurveys()
+        {
+            var surveys = await _surveyService.GetSurveyDisplayResponses();
+            return Ok(surveys);
+        }
+        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSurveyById(int id)
+        {
+            var survey = await _surveyService.GetSurveyById(id);
+            return Ok(survey);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateSurvey([FromBody] CreateSurveyRequest request)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest();
+            var surveyId = await _surveyService.CreateSurvey(request);
+            var questions = request.Questions;
+            foreach (var question in questions)
+            {
+                question.SurveyId = surveyId;
+                var questionId = await _questionService.CreateQuestion(question);
+                if (question.Options == null)
+                {
+                    continue;
+                }
+                foreach (var option in question.Options)
+                {
+                    var newOption = new Option()
+                    {
+                        QuestionId = questionId,
+                        Text = option
+                    };
+                    await _questionService.CreateOption(newOption);
+                }
+                
+            }
+            return Ok(nameof(GetSurveyById));
+        }
+        
+
+        [HttpGet("UserIds")]
+        public async Task<IActionResult> AllUsers()
+        {
+            var users = await _userService.GetAllUserIds();
+            return Ok(users);
+        }
+
     }
 }

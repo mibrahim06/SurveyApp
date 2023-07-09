@@ -8,4 +8,5 @@ public interface IUserRepository : IRepository<User>
     public Task<User?> GetUserByExternalProviderAsync(string provider, string nameIdentifier);
     public Task<int> GetUserId(string nameIdentifier);
     public Task<User> GetUser(string nameIdentifier);
+    public Task<List<int>> GetAllUserIds();
 }

@@ -76,4 +76,10 @@ public class EFUserRepository : IUserRepository
         }
         return user;
     }
+
+    public async Task<List<int>> GetAllUserIds()
+    {
+        var users = await _dbContext.Users.Select(x => x.Id).ToListAsync();
+        return users;
+    }
 }

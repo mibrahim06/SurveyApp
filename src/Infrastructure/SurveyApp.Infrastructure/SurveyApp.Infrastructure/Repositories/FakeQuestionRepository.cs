@@ -69,5 +69,14 @@ public class FakeQuestionRepository : IQuestionRepository
     {
         throw new NotImplementedException();
     }
-    
+
+    public Task<int> CreateQuestion(Question question)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task CreateOption(Option option)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -4,6 +4,6 @@ namespace SurveyApp.Mvc.Models;
 
 public class CreateSurveyModel
 {
-    public CreateNewSurveyRequest CreateNewSurveyRequest { get; set; }
-    public CreateNewQuestionRequest CreateNewQuestionRequest { get; set; }
+    public CreateSurveyRequest CreateSurveyRequest { get; set; }
+    public CreateQuestionRequest CreateQuestionRequest { get; set; }
 }

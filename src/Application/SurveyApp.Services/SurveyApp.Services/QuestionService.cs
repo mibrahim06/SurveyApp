@@ -1,3 +1,4 @@
+using SurveyApp.DataTransferObjects.Incoming;
 using SurveyApp.Entities;
 using SurveyApp.Infrastructure.Repositories;
 
@@ -23,5 +24,35 @@ public class QuestionService : IQuestionService
     {
         var answers = await _questionRepository.GetAnswersAsync(questionId);
         return answers;
+    }
+
+    public async Task<int> CreateQuestion(CreateQuestionRequest request)
+    {
+        var optionType = GetOptionType(request.Type);
+        var question = new Question
+       {
+           Title = request.Text,
+           OptionType = optionType,
+           SurveyId = request.SurveyId
+       };
+        var questionId = await _questionRepository.CreateQuestion(question); 
+        return questionId;
+    }
+
+    public async Task CreateOption(Option option)
+    {
+        await _questionRepository.CreateOption(option);
+    }
+
+    private OptionType GetOptionType(string optionType)
+    {
+        return optionType switch
+        {
+            "Text" => OptionType.Text,
+            "Rating" => OptionType.Rating,
+            "SingleChoice" => OptionType.SingleChoice,
+            "MultipleChoice" => OptionType.MultipleChoice,
+            _ => throw new ArgumentOutOfRangeException(nameof(optionType), optionType, null)
+        };
     }
 }

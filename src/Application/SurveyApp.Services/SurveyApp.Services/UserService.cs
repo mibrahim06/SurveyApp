@@ -75,4 +75,10 @@ public class UserService : IUserService
         var user =  await _userRepository.GetUser(nameIdentifier);
         return user;
     }
+
+    public async  Task<List<int>> GetAllUserIds()
+    {
+        var userIds = await _userRepository.GetAllUserIds();
+        return userIds;
+    }
 }
