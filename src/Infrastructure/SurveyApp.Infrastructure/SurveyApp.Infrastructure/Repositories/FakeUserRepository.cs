@@ -92,12 +92,12 @@ public class FakeUserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public int GetUserId(string nameIdentifier)
+    public Task<int> GetUserId(string nameIdentifier)
     {
         throw new NotImplementedException();
     }
 
-    public User GetUser(string nameIdentifier)
+    public Task<User> GetUser(string nameIdentifier)
     {
         throw new NotImplementedException();
     }

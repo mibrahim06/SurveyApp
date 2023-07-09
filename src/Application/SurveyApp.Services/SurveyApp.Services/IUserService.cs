@@ -9,7 +9,7 @@ public interface IUserService
     User? GetUserByExternalProvider(string provider, string nameIdentifier);
 
     bool AddNewUser(string provider, List<Claim> claims);
-    IEnumerable<User> GetAll();
-    int GetUserId(string nameIdentifier);
-    User GetUser(string nameIdentifier);
+    Task<IEnumerable<User>> GetAll();
+    public Task<int> GetUserId(string nameIdentifier);
+    public Task<User> GetUser(string nameIdentifier);
 }

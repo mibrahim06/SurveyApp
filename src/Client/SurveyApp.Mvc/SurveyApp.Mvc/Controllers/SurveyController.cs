@@ -25,10 +25,10 @@ public class SurveyController : Controller
     }
     
     [Authorize]
-    public IActionResult MySurveys()
+    public async Task<IActionResult> MySurveys()
     {
-        var user = _userService.GetUser(User.FindFirstValue(ClaimTypes.NameIdentifier));
-        var surveyDisplayResponses = _surveyService.GetSurveyDisplayResponsebByUserId(user.Id);
+        var user =  await _userService.GetUser(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        var surveyDisplayResponses = await _surveyService.GetSurveyDisplayResponseByUserId(user.Id);
         return View(surveyDisplayResponses);
     }
 
@@ -58,10 +58,10 @@ public class SurveyController : Controller
     }
 
     [HttpGet]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
         ViewData["SurveyId"] = id;
-        var updateSurveyRequest = _surveyService.GetUpdateSurveyRequestById(id);
+        var updateSurveyRequest = await _surveyService.GetUpdateSurveyRequestById(id);
         return View(updateSurveyRequest);
     }
     

@@ -60,15 +60,15 @@ public class EFUserRepository : IUserRepository
         return user;
     }
 
-    public int GetUserId(string nameIdentifier)
+    public async Task<int> GetUserId(string nameIdentifier)
     {
-        var user = _dbContext.Users.FirstOrDefault(x => x.NameIdentifier == nameIdentifier);
+        var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.NameIdentifier == nameIdentifier);
         return user.Id;
     }
 
-    public User GetUser(string nameIdentifier)
+    public async Task<User> GetUser(string nameIdentifier)
     {
-        var user = _dbContext.Users.FirstOrDefault(x => x.NameIdentifier == nameIdentifier);
+        var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.NameIdentifier == nameIdentifier);
         if (user == null)
         {
             // try to find by username 

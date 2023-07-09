@@ -58,18 +58,21 @@ public class UserService : IUserService
         return true;
     }
 
-    public IEnumerable<User> GetAll()
+    public async Task<IEnumerable<User>> GetAll()
     {
-        return _userRepository.GetAllAsync().Result;
+        var users = await _userRepository.GetAllAsync();
+        return users;
     }
     
-    public int GetUserId(string nameIdentifier)
+    public async Task<int> GetUserId(string nameIdentifier)
     {
-        return _userRepository.GetUserId(nameIdentifier);
+        var userId = await _userRepository.GetUserId(nameIdentifier);
+        return userId;
     }
     
-    public User GetUser(string nameIdentifier)
+    public async Task<User> GetUser(string nameIdentifier)
     {
-        return _userRepository.GetUser(nameIdentifier);
+        var user =  await _userRepository.GetUser(nameIdentifier);
+        return user;
     }
 }

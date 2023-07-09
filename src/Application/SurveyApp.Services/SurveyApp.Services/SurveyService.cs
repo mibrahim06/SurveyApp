@@ -16,23 +16,23 @@ public class SurveyService : ISurveyService
         _mapper = mapper;
         _surveyRepository = surveyRepository;
     }
-    public IEnumerable<SurveyDisplayResponse> GetSurveyDisplayResponses()
+    public async Task<IEnumerable<SurveyDisplayResponse>> GetSurveyDisplayResponses()
     {
-        var surveys = _surveyRepository.GetAllAsync().Result;
+        var surveys = await _surveyRepository.GetAllAsync();
         var surveyDisplayResponses = _mapper.Map<IEnumerable<SurveyDisplayResponse>>(surveys);
         return surveyDisplayResponses;
     }
     
-    public IEnumerable<SurveyDisplayResponse> GetSurveyDisplayResponsebByUserId(int userId)
+    public async Task<IEnumerable<SurveyDisplayResponse>> GetSurveyDisplayResponseByUserId(int userId)
     {
-        var surveys = _surveyRepository.GetSurveysByUserId(userId).Result;
+        var surveys = await _surveyRepository.GetSurveysByUserId(userId);
         var surveyDisplayResponses = _mapper.Map<IEnumerable<SurveyDisplayResponse>>(surveys);
         return surveyDisplayResponses;
     }
 
-    public UpdateSurveyRequest GetUpdateSurveyRequestById(int id)
+    public async Task<UpdateSurveyRequest> GetUpdateSurveyRequestById(int id)
     {
-        var survey =  _surveyRepository.GetByIdAsync(id).Result;
+        var survey = await _surveyRepository.GetByIdAsync(id);
         var updateSurveyRequest = _mapper.Map<UpdateSurveyRequest>(survey);
         return updateSurveyRequest;
     }
