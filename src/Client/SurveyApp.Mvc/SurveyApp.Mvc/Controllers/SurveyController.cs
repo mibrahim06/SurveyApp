@@ -68,6 +68,7 @@ public class SurveyController : Controller
     public IActionResult AddQuestion(int id)
     {
         ViewBag.SurveyId = id;
+        // TODO: Find a better way to do this
         var QuestionTypeSelectList = new List<SelectListItem>
         {
             new SelectListItem("Çoktan Seçmeli", "MultipleChoice"),
@@ -98,6 +99,12 @@ public class SurveyController : Controller
             Questions = questions
         };
         return View(model);
+    }
+
+    [HttpPost("Survey/AddSurveyAnswer")]
+    public async Task<IActionResult> AddSurveyAnswer(ShowSurveyModel model)
+    {
+        return View();
     }
     
     [Authorize]

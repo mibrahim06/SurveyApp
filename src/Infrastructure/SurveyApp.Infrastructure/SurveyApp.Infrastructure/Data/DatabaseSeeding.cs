@@ -13,7 +13,6 @@ public static class DatabaseSeeding
         SeedAnswers(dbContext);
     }
 
-   
     private static void SeedUsers(SurveyDbContext dbContext)
     {
         if (!dbContext.Users.Any())
