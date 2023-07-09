@@ -11,6 +11,10 @@ namespace SurveyApp.API.Controllers
     [ApiController]
     public class SurveyController : ControllerBase
     {
-        
+        [HttpGet]
+        public Task<IActionResult> GetSurveys()
+        {
+            
+        }
     }
 }
