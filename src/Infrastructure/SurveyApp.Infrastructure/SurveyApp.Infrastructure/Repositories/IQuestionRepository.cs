@@ -10,5 +10,6 @@ public interface IQuestionRepository : IRepository<Question>
     public Task<int> CreateQuestion(Question question);
     public Task CreateOption(Option option);
     public Task CreateAnswer(Answer answer);
-    public Task<int> GetOptionResponseCount(int optionId);
+    public Task<int> GetOptionResponseCount(int optionId, int QuestionId);
+    public Task<int> GetResponseCount(int questionId, string text);
 }

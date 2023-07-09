@@ -49,11 +49,18 @@ public class QuestionService : IQuestionService
         await _questionRepository.CreateAnswer(answer);
     }
 
-    public async Task<int> GetOptionResponseCount(int optionId)
+    public async Task<int> GetOptionResponseCount(int optionId, int QuestionId)
     {
-        var count = await _questionRepository.GetOptionResponseCount(optionId);
+        var count = await _questionRepository.GetOptionResponseCount(optionId, QuestionId);
         return count;
     }
+
+    public async Task<int> GetResponseCount(int questionId, string text)
+    {
+        var count = await _questionRepository.GetResponseCount(questionId, text);
+        return count;
+    }
+
 
     private OptionType GetOptionType(string optionType)
     {

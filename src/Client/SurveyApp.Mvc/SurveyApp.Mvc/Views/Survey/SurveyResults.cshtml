@@ -41,12 +41,17 @@
             }
             else if (modelQuestion.question.OptionType == OptionType.SingleChoice)
             {
+                
                 @if (modelQuestion.answerCount == 0)
                 {
                     <p>Hiç cevap bulunmamaktadır.</p>
                 }
                 else
                 {
+                    @foreach (var counter in modelQuestion.responseCountModels)
+                    {
+                        <p>@counter.Text Sayısı = @counter.Count</p>
+                    }
                     @foreach(var answer in modelQuestion.Answers)
                         {
                             <p>@singleChoiceResultNumber)@answer.Text</p>
@@ -63,6 +68,10 @@
                 }
                 else
                 {
+                    @foreach (var counter in modelQuestion.responseCountModels)
+                    {
+                        <p>@counter.Text Sayısı = @counter.Count</p>
+                    }
                     @foreach (var answer in modelQuestion.Answers)
                     {
                         <p>@ratingResultNumber) @answer.Text </p>

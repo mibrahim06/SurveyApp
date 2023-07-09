@@ -49,16 +49,34 @@ public class SurveyController : Controller
             var answers = await _questionService.GetAnswersAsync(question.Id);
             var options = await _questionService.GetOptionsAsync(question.Id);
             var responseCountModels = new List<QuestionAnswerCountModel>();
-            foreach(var option in options){
-                var responseCount = await _questionService.GetOptionResponseCount(option.Id);
-                var optionText = option.Text;
-                var responseModel = new QuestionAnswerCountModel()
+            if (question.OptionType == OptionType.MultipleChoice || question.OptionType == OptionType.SingleChoice)
+            {
+                foreach (var option in options)
                 {
-                    Count = responseCount,
-                    Text = optionText
-                };
-                responseCountModels.Add(responseModel);
+                    var responseCount = await _questionService.GetOptionResponseCount(option.Id, question.Id);
+                    var optionText = option.Text;
+                    var responseModel = new QuestionAnswerCountModel()
+                    {
+                        Count = responseCount,
+                        Text = optionText
+                    };
+                    responseCountModels.Add(responseModel);
+                }
             }
+            else if (question.OptionType == OptionType.Rating)
+            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    var responseCount = await _questionService.GetResponseCount(question.Id, i.ToString());
+                    var responseModel = new QuestionAnswerCountModel()
+                    {
+                        Count = responseCount,
+                        Text = i.ToString()
+                    };
+                    responseCountModels.Add(responseModel);
+                }
+            }
+            
             var questionAnswer = new QuestionAnswerModel
             {
                 question = question,

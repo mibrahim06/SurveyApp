@@ -11,5 +11,6 @@ public interface IQuestionService
     public Task<int> CreateQuestion(CreateQuestionRequest request);
     public Task CreateOption(Option option);
     public Task CreateAnswer(Answer answer);
-    public Task<int> GetOptionResponseCount(int optionId);
+    public Task<int> GetOptionResponseCount(int optionId, int QuestionId);
+    public Task<int> GetResponseCount(int questionId, string text);
 }

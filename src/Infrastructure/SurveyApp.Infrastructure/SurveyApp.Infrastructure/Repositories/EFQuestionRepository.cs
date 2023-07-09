@@ -71,10 +71,18 @@ public class EFQuestionRepository : IQuestionRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<int> GetOptionResponseCount(int optionId)
+    public async Task<int> GetOptionResponseCount(int optionId, int QuestionId)
     {
         var optionText = await _dbContext.Options.Where(x => x.Id == optionId).Select(x => x.Text).FirstOrDefaultAsync();
-        var count = await _dbContext.Answers.Where(x => x.Text == optionText).CountAsync();
+        var count = await _dbContext.Answers.Where(x => x.Text == optionText && x.QuestionId == QuestionId).CountAsync();
         return count;
     }
+
+    public async Task<int> GetResponseCount(int questionId, string text)
+    {
+        var count = await _dbContext.Answers.Where(x => x.Text == text && x.QuestionId == questionId).CountAsync();
+        return count;
+    }
+
+    
 }
