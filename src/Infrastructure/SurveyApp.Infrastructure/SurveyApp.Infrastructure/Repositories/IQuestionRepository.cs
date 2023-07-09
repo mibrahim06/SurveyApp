@@ -9,4 +9,5 @@ public interface IQuestionRepository : IRepository<Question>
     
     public Task<int> CreateQuestion(Question question);
     public Task CreateOption(Option option);
+    public Task CreateAnswer(Answer answer);
 }

@@ -64,4 +64,10 @@ public class EFQuestionRepository : IQuestionRepository
         var addingOption = await _dbContext.Options.AddAsync(option);
         await _dbContext.SaveChangesAsync();
     }
+
+    public async Task CreateAnswer(Answer answer)
+    {
+        var addingAnswer = await _dbContext.Answers.AddAsync(answer);
+        await _dbContext.SaveChangesAsync();
+    }
 }

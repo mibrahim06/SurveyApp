@@ -44,6 +44,11 @@ public class QuestionService : IQuestionService
         await _questionRepository.CreateOption(option);
     }
 
+    public async Task CreateAnswer(Answer answer)
+    {
+        await _questionRepository.CreateAnswer(answer);
+    }
+
     private OptionType GetOptionType(string optionType)
     {
         return optionType switch

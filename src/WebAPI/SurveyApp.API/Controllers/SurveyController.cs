@@ -75,6 +75,26 @@ namespace SurveyApp.API.Controllers
             var users = await _userService.GetAllUserIds();
             return Ok(users);
         }
+        
+        [HttpGet("SurveyQuestions/{id}")]
+        public async Task<IActionResult> GetSurveyQuestions(int id)
+        {
+            var questions = await _surveyService.GetQuestionsBySurveyId(id);
+            return Ok(questions);
+        }
+        
+        [HttpPost("Answer")]
+        public async Task<IActionResult> AnswerQuestion(CreateAnswerRequest answer)
+        {
+            var response = new Answer()
+            {
+                QuestionId = answer.QuestionId,
+                Text = answer.Text
+            };
+            await _questionService.CreateAnswer(response);
+            return Ok();
+        }
+        
 
     }
 }
