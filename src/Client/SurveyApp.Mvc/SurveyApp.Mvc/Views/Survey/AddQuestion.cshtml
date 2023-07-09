@@ -3,11 +3,30 @@
 @{
     ViewData["Title"] = "AddQuestion";
     var surveyId = ViewBag.SurveyId;
+    
 }
 
 <h3> Soru Ekle</h3>
 
 
 <div class="row md-4">
-    
+    <form asp-action="AddQuestion">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.Text" class="control-label">Soru Adı</label>
+            <input asp-for="@Model.Text" class="form-control"/>
+            <span asp-validation-for="@Model.Text" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Type" class="control-label">Soru Tipi</label>
+            <select asp-for="Type" class="form-control" asp-items="ViewBag.QuestionTypeSelectList">
+                <option hidden="" value="" disabled selected>Lütfen soru tipi seçin</option>
+            </select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group" style="margin-top: 10px;">
+            <input type="submit" value="Ekle" class="btn btn-primary"/>
+        </div>
+    </form>
 </div>

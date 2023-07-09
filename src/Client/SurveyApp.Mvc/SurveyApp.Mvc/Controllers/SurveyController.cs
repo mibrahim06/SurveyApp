@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SurveyApp.DataTransferObjects.Incoming;
 using SurveyApp.DataTransferObjects.Outgoing;
@@ -67,6 +68,14 @@ public class SurveyController : Controller
     public IActionResult AddQuestion(int id)
     {
         ViewBag.SurveyId = id;
+        var QuestionTypeSelectList = new List<SelectListItem>
+        {
+            new SelectListItem("Çoktan Seçmeli", "MultipleChoice"),
+            new SelectListItem("Tek seçim", "SingleChoice"),
+            new SelectListItem("Yorum", "Text"),
+            new SelectListItem("Puan", "Rating")
+        };
+        ViewBag.QuestionTypeSelectList = QuestionTypeSelectList;
         return View();
     }
     
