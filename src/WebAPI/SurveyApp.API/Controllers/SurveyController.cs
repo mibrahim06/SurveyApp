@@ -63,17 +63,34 @@ namespace SurveyApp.API.Controllers
                     };
                     await _questionService.CreateOption(newOption);
                 }
-                
             }
             return Ok(nameof(GetSurveyById));
         }
-        
 
         [HttpGet("UserIds")]
         public async Task<IActionResult> AllUsers()
         {
             var users = await _userService.GetAllUserIds();
             return Ok(users);
+        }
+
+        [HttpPost("AnswerSurvey")]
+        public async Task<IActionResult> AnswerSurvey(AnswerSurveyRequest model)
+        {
+            var questions = model.Questions;
+            foreach (var question in questions)
+            {
+                foreach (var answer in question.Answers)
+                {
+                    var newAnswer = new Answer()
+                    {
+                        QuestionId = question.QuestionId,
+                        Text = answer
+                    };
+                    await _questionService.CreateAnswer(newAnswer);
+                }
+            }
+            return Ok();
         }
         
         [HttpGet("SurveyQuestions/{id}")]
@@ -82,7 +99,7 @@ namespace SurveyApp.API.Controllers
             var questions = await _surveyService.GetQuestionsBySurveyId(id);
             return Ok(questions);
         }
-        
+
         [HttpPost("Answer")]
         public async Task<IActionResult> AnswerQuestion(CreateAnswerRequest answer)
         {

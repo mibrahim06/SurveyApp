@@ -12,10 +12,16 @@
 }
 
 <h4>@Model.surveyTitle anketinin sonuçları..</h4>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
 
 <div class="row justify-content-center">
     @foreach (var modelQuestion in Model.questionAnswers)
     {
+        
+
         <p>@questionNumber) @modelQuestion.question.Title</p> questionNumber++;
         <br/>
         <div class="row" style="margin-left: 30px;">
@@ -28,15 +34,42 @@
                 }
                 else
                 {
-                    @foreach (var counter in modelQuestion.responseCountModels)
-                    {
-                        <p>@counter.Text Sayısı = @counter.Count</p>
-                    }
-                    @foreach(var answer in modelQuestion.Answers)
-                    {
-                        <p>@multipleChoiceResultNumber)  @answer.Text </p>
-                        multipleChoiceResultNumber++;
-                    }
+                    <div class="row justify-content-center">
+                        <canvas id="barChart"></canvas>
+                        <script>
+                            var ctx = document.getElementById('barChart').getContext('2d');
+                            var labels = []; 
+                            var data = []; 
+                    
+                            @foreach (var counter in modelQuestion.responseCountModels)
+                            {
+                                <text>
+                                labels.push('@counter.Text');
+                                data.push(@counter.Count);
+                                </text>
+                            }
+                            var barChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: labels,
+                                    datasets: [{
+                                        label: 'Cevap Sayısı',
+                                        data: data,
+                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                        borderColor: 'rgba(75, 192, 192, 1)', 
+                                        borderWidth: 1 
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true 
+                                        }
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
                 }
             }
             else if (modelQuestion.question.OptionType == OptionType.SingleChoice)
@@ -71,12 +104,6 @@
                     @foreach (var counter in modelQuestion.responseCountModels)
                     {
                         <p>@counter.Text Sayısı = @counter.Count</p>
-                    }
-                    @foreach (var answer in modelQuestion.Answers)
-                    {
-                        <p>@ratingResultNumber) @answer.Text </p>
-                        ratingResultNumber++;
-                        <br/>
                     }
                 }
             }

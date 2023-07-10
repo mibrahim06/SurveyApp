@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aiIE1eexpIYxMWi2snicZEr2L/F/XOSL+uCTaBwkQypmkpKvW80oZZoGpWk+conBHwAzwb45lOHOIbelEKHACA==",
+  "dgSpecHash": "CGLBoUjJZQ79en9ZdAVHZKb8Qv2wZrU6x4wKs8+oB7eiPOFHNY1iTdSrb/8fHHiygoOya9G3dXYQb6dmZE2tsw==",
   "success": true,
   "projectFilePath": "/Users/musibra/Desktop/SurveyApp/src/Client/SurveyApp.Mvc/SurveyApp.Mvc/SurveyApp.Mvc.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/musibra/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/musibra/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/musibra/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
+    "/Users/musibra/.nuget/packages/chart.js/3.7.1/chart.js.3.7.1.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.aspnetcore.authentication.google/7.0.7/microsoft.aspnetcore.authentication.google.7.0.7.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.aspnetcore.authentication.openidconnect/7.0.7/microsoft.aspnetcore.authentication.openidconnect.7.0.7.nupkg.sha512",
     "/Users/musibra/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.7/microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.7.nupkg.sha512",
